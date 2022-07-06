@@ -1,3 +1,4 @@
+//using o(1) space
 class Solution {
 public:
     int removeElement(vector<int> &nums, int k)
