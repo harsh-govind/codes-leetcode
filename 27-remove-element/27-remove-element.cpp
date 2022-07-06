@@ -1,28 +1,24 @@
 //using o(1) space
 class Solution {
 public:
-    int removeElement(vector<int> &nums, int k)
+    int removeElement(vector<int> &v, int k) // space o(1)
 {
-    int ans = 0;
-    for (auto &val : nums)
+    int ans = 0, n = v.size();
+    for (auto &val : v)
     {
         if (val == k)
         {
             ans++;
         }
     }
-            for (int l = 0; l < ans; l++)
-
-    for (int i = 0; i < nums.size(); i++)
+    int i = 0;
+    for (int j = 0; j < n; j++)
     {
-        if (nums[i] == k)
+        if (v[j] != k)
         {
-            for (int j = i; j < nums.size()-1; j++)
-            {
-                nums[j] = nums[j + 1];
-            }
+            v[i++] = v[j];
         }
     }
-    return nums.size()-ans;
+    return n - ans;
 }
 };
