@@ -1,13 +1,15 @@
-class Solution {
-public:
-    vector<int> shuffle(vector<int>& nums, int n) {
-        vector<int> v;
-        int j=(n);
-        for(int i=0;i<n;i++)
+class Solution
+{
+    public:
+        vector<int> shuffle(vector<int> &nums, int n)
         {
-            v.push_back(nums[i]);
-            v.push_back(nums[j++]);
+            vector<int> v;
+            int j = (n);
+            for (int i = 0; i < n; i++)
+            {
+                v.push_back(nums[i]);
+                v.push_back(nums[j++]);
+            }
+            return v;
         }
-        return v;
-    }
 };
