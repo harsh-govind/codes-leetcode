@@ -1,16 +1,14 @@
-class Solution {
-public:
-    string restoreString(string s, vector<int>& indices) {
-        string ans="";
-        unordered_map<int, char> m;
-        for(int i=0;i<s.size();i++)
+class Solution
+{
+    public:
+        string restoreString(string s, vector<int> &indices)
         {
-            m[indices[i]]=s[i];
+            string ans=s;
+            int i=0;
+            for(auto &val:indices)
+            {
+                ans[val]=s[i++];
+            }
+            return ans;
         }
-        for(int i=0;i<s.size();i++)
-        {
-            ans+=m[i];
-        }
-        return ans;
-    }
 };
