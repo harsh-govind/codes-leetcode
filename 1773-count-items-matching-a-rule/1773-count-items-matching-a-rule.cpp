@@ -6,16 +6,16 @@ class Solution
             int ans = 0;
             for (int i = 0; i < items.size(); i++)
             {
-                    int a = 0;
-                    if (ruleKey == "type")
-                        a = 0;
-                    else if (ruleKey == "color")
-                        a = 1;
-                    else
-                        a = 2;
+                int a = 0;
+                if (ruleKey == "type")
+                    a = 0;
+                else if (ruleKey == "color")
+                    a = 1;
+                else
+                    a = 2;
 
-                    if (items[i][a] == ruleValue)
-                        ans++;
+                if (items[i][a] == ruleValue)
+                    ans++;
             }
             return ans;
         }
