@@ -9,7 +9,7 @@ class Solution
 
                 for (int j = 0; j < n; j++)
                 {
-                    if ((j - i + 1) % 2 != 0)
+                    if ((j - i) % 2 == 0)
                     {
                         for (int k = i; k <= j; k++)
                         {
