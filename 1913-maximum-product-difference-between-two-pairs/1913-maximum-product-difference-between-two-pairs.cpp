@@ -21,11 +21,11 @@ class Solution
                     c = val;
                     cc = i;
                 }
-                if(i>0)
-                if (nums[i] != nums[i - 1])
-                {
-                    flag = false;
-                }
+                if (i > 0)
+                    if (nums[i] != nums[i - 1])
+                    {
+                        flag = false;
+                    }
             }
             if (flag)
                 return 0;
