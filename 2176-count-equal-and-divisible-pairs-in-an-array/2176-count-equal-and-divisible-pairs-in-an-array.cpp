@@ -3,13 +3,22 @@ class Solution
     public:
         int countPairs(vector<int> &nums, int k)
         {
-            int ans=0;
-            for(int i=0;i<nums.size();i++)
+            int ans = 0;
+            int i = 0, j = nums.size() - 1;
+            while (i < j)
             {
-                for(int j=0;j<i;j++)
+                if (nums[i] == nums[j] and ((i *j) % k == 0))
                 {
-                    if((i*j)%k==0 and nums[i]==nums[j])
-                        ans++;
+                    ans++;
+                }
+                if (j == i+1)
+                {
+                    i++;
+                    j = nums.size() - 1;
+                }
+                else
+                {
+                    j--;
                 }
             }
             return ans;
