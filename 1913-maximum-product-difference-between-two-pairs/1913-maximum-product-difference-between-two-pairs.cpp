@@ -4,16 +4,7 @@ class Solution
         int maxProductDifference(vector<int> &nums)
         {
             bool flag = true;
-            for (int i = 1; i < nums.size(); i++)
-            {
-                if (nums[i] != nums[i - 1])
-                {
-                    flag = false;
-                }
-            }
-            if (flag)
-                return 0;
-            long long a, b, c, d, bc, cc;
+            int a, b, c, d, bc, cc;
             a = b = INT_MIN;
             c = d = INT_MAX;
             for (int i = 0; i < nums.size(); i++)
@@ -30,7 +21,14 @@ class Solution
                     c = val;
                     cc = i;
                 }
+                if(i>0)
+                if (nums[i] != nums[i - 1])
+                {
+                    flag = false;
+                }
             }
+            if (flag)
+                return 0;
             for (int i = 0; i < nums.size(); i++)
             {
                 int val = nums[i];
