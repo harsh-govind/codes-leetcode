@@ -6,10 +6,10 @@ class Solution
             int ans = 0, mx = 0;
             for (int i = 0; i < gain.size(); i++)
             {
-                mx+=gain[i];
-                if(mx>ans)
+                mx += gain[i];
+                if (mx > ans)
                 {
-                    ans=mx;
+                    ans = mx;
                 }
             }
             return ans;
