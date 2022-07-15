@@ -29,11 +29,11 @@ class Solution
                             {
                                 h--;
                             }
-                            
+
                             l++;
                             h--;
                         }
-                        else if(nums[l]+nums[h]<sum)
+                        else if (nums[l] + nums[h] < sum)
                         {
                             l++;
                         }
