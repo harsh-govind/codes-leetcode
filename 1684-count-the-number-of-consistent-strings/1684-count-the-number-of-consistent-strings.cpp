@@ -16,9 +16,9 @@ class Solution
                 bool flag = true;
                 for (int j = 0; j < words[i].size(); j++)
                 {
-                    if(check.find(words[i][j])==check.end())
+                    if (check.find(words[i][j]) == check.end())
                     {
-                        flag=false;
+                        flag = false;
                         break;
                     }
                 }
