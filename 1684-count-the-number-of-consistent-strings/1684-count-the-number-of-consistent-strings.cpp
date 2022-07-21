@@ -13,16 +13,14 @@ class Solution
 
             for (int i = 0; i < words.size(); i++)
             {
-                unordered_set<char> temp;
+                bool flag = true;
                 for (int j = 0; j < words[i].size(); j++)
                 {
-                    temp.insert(words[i][j]);
-                }
-                bool flag = true;
-                for (auto &val: temp)
-                {
-                    if (check.find(val) == check.end())
-                        flag = false;
+                    if(check.find(words[i][j])==check.end())
+                    {
+                        flag=false;
+                        break;
+                    }
                 }
                 if (flag)
                     ans++;
