@@ -17,7 +17,7 @@ class Solution
                 }
                 return ans;
             }
-            i=1;
+            i = 1;
             while (i <= n / 2)
             {
                 ans.push_back(i);
