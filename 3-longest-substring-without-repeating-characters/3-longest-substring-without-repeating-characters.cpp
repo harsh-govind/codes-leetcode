@@ -21,10 +21,10 @@ class Solution
                 {
                     ans = max(ans, currAns);
                     currAns = 1;
-                    int temp = st[s[i]]+1;
+                    int temp = st[s[i]] + 1;
                     st.erase(st.begin(), st.end());
-                    i=temp;
-                    st[s[i]]=i;
+                    i = temp;
+                    st[s[i]] = i;
                 }
             }
             return ans;
