@@ -5,7 +5,7 @@ class Solution
         {
             vector<int> ans;
             int l = 0, r = matrix[0].size() - 1, u = 0, d = matrix.size() - 1;
-            while (ans.size() < matrix.size() *matrix[0].size())
+            while (l<=r and u<=d)
             {
                 for (int i = l; i <= r and ans.size() < matrix.size() *matrix[0].size(); i++)
                 {
