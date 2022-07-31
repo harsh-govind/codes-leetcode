@@ -68,12 +68,12 @@ class Solution
                 }
                 else
                 {
-                    ListNode *t1 = p, *t2 = q;
+                    last->next = p;
                     p = p->next;
+                    last=last->next;
+                    last->next=q;
                     q = q->next;
-                    last->next = t1;
-                    t1->next = t2;
-                    last = t2;
+                    last=last->next;
                     last->next = nullptr;
                 }
             }
