@@ -11,49 +11,81 @@
 class Solution
 {
     public:
-    ListNode* mergeTwoLists(ListNode *list1, ListNode *list2)
+    ListNode* mergeTwoLists(ListNode *a, ListNode *b)
     {
-        ListNode *p = list1, *q = list2;
-        ListNode *dummy = new ListNode(0);
-        ListNode *temp = dummy;
-        while (p and q)
+        if(!a)
         {
-            if (p->val < q->val)
+            return b;
+        }
+        if(!b)
+        {
+            return a;
+        }
+        ListNode *last=nullptr, *ans=nullptr;
+        
+        if(a and b and a->val < b->val)
+        {
+            last = a;
+            ans = last;
+            a = a->next;
+            last->next = nullptr;
+        }
+        else if(a and b and a->val > b->val)
+        {
+            last = b;
+            ans = last;
+            b = b->next;
+            last->next = nullptr;
+        }
+        else if(a and b)
+        {
+            last = a;
+            ans = last;
+            a = a->next;
+            last->next = b;
+            last = last->next;
+            b=b->next;
+            last->next = nullptr;
+        }
+        
+        ListNode *p=a, *q=b;
+        
+        while(p and q)
+        {
+            if(p->val < q->val)
             {
-                temp->next = new ListNode(p->val);
-                temp = temp->next;
+                last->next=p;
+                p=p->next;
+                last=last->next;
+                last->next=nullptr;
+            }
+            else if(p->val > q->val)
+            {
+                last->next=q;
+                q=q->next;
+                last=last->next;
+                last->next = nullptr;
+            }
+            else
+            {
+                ListNode *t1 = p, *t2 = q;
                 p = p->next;
-            }
-            else if (q->val < p->val)
-            {
-                temp->next = new ListNode(q->val);
-                temp = temp->next;
                 q = q->next;
-            }
-            else if (p->val == q->val)
-            {
-                temp->next = new ListNode(p->val);
-                temp = temp->next;
-                p = p->next;
-
-                temp->next = new ListNode(q->val);
-                temp = temp->next;
-                q = q->next;
+                last->next = t1;
+                t1->next = t2;
+                last = t2;
+                last->next = nullptr;
             }
         }
-        while (p)
+        
+        if(p)
         {
-            temp->next = new ListNode(p->val);
-            temp = temp->next;
-            p = p->next;
+            last->next = p;
         }
-        while (q)
+        if(q)
         {
-            temp->next = new ListNode(q->val);
-            temp = temp->next;
-            q = q->next;
-        }
-        ListNode *head = dummy->next;
-        return head;
+            last->next = q;
+        }        
+        return ans;
     }
 };
