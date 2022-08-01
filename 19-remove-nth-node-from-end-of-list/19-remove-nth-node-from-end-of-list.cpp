@@ -10,33 +10,24 @@
  */
 class Solution {
 public:
-    int count(ListNode *p)
-    {
-        int ans=0;
+    ListNode* removeNthFromEnd(ListNode* head, int n) {        
+        ListNode *p=head, *q=head;
+        int count = 0;
         while(p)
         {
-            ans++;
+            if(count>n)
+            {
+                q=q->next;
+            }
             p=p->next;
+            count++;
         }
-        return ans;
-    }
-    ListNode* removeNthFromEnd(ListNode* head, int n) {        
-        int l = count(head);
-        if(l==n)
+        if(count == n)
         {
             return head->next;
         }
-        l = l - n;
-        ListNode*p=head, *q=head;
-        for(int i=0;i<l;i++)
-        {
-            q=p;
-            p=p->next;            
-        }
-
-        q->next=p->next;
-        p=nullptr;
-        
+        cout<<q->val<<endl;
+        q->next=q->next->next;
         return head;
     }
 };
