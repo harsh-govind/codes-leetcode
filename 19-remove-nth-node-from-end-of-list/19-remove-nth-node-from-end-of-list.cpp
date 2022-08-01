@@ -10,9 +10,11 @@
  */
 class Solution {
 public:
-    ListNode* removeNthFromEnd(ListNode* head, int n) {        
+    ListNode* removeNthFromEnd(ListNode* head, int n) {  
+        
         ListNode *p=head, *q=head;
         int count = 0;
+        
         while(p)
         {
             if(count>n)
@@ -22,12 +24,14 @@ public:
             p=p->next;
             count++;
         }
+        
         if(count == n)
         {
             return head->next;
         }
-        cout<<q->val<<endl;
+        
         q->next=q->next->next;
+        
         return head;
     }
 };
