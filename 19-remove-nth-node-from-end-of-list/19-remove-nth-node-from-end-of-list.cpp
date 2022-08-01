@@ -24,16 +24,8 @@ public:
         //count - n + 1
         
         int l = count(head);
-        if(l==1)
-        {
-            return nullptr;
-        }
-        else if(l==2 and n==1)
-        {
-            head->next=nullptr;
-            return head;
-        }
-        else if(l==n)
+        
+         if(l==n)
         {
             return head->next;
         }
