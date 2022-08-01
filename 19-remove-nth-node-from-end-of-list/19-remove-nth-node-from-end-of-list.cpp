@@ -24,8 +24,7 @@ public:
         //count - n + 1
         
         int l = count(head);
-        
-         if(l==n)
+        if(l==n)
         {
             return head->next;
         }
@@ -36,7 +35,7 @@ public:
             q=p;
             p=p->next;            
         }
-        cout<<p->val<<" "<<q->val<<endl;
+
         q->next=p->next;
         p=nullptr;
         
