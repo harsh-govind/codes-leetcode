@@ -20,9 +20,7 @@ public:
         }
         return ans;
     }
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
-        //count - n + 1
-        
+    ListNode* removeNthFromEnd(ListNode* head, int n) {        
         int l = count(head);
         if(l==n)
         {
