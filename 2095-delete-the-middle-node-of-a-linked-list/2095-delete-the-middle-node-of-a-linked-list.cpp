@@ -27,9 +27,7 @@ public:
                 p=p->next;
                 q=q->next;
             }
-        }
-        cout<<r->val<<" "<<q->val;
-        
+        }        
         r->next=q->next;
         return head;
     }
