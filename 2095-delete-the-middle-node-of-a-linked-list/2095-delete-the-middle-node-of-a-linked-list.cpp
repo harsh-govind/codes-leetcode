@@ -15,6 +15,7 @@ public:
         
         if(head->next==nullptr)
         {
+            delete head;
             return nullptr;
         }
         
@@ -29,6 +30,7 @@ public:
             }
         }        
         r->next=q->next;
+        delete q;
         return head;
     }
 };
