@@ -10,7 +10,6 @@ public:
                 return i;
             }
             leftSum+=nums[i];
-
         }
         return -1;
         
