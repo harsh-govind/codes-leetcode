@@ -1,9 +1,9 @@
 /**
  *Definition for singly-linked list.
  *struct ListNode {
- *   int val;
- *   ListNode * next;
- *   ListNode(int x) : val(x), next(NULL) {}
+ *  int val;
+ *  ListNode * next;
+ *  ListNode(int x) : val(x), next(NULL) {}
  *};
  */
 class Solution
@@ -11,21 +11,31 @@ class Solution
     public:
         ListNode* detectCycle(ListNode *head)
         {
-            unordered_set<ListNode*> a;
-            ListNode *p = head;
-
+            ListNode *p = head, *q = head;
             while (p)
             {
-                if (a.find(p) == a.end())
-                {
-                    a.insert(p);
-                }
-                else
-                {
-                    return p;
-                }
                 p = p->next;
+                if (p)
+                {
+                    p = p->next;
+                    q = q->next;
+                }
+                if (p == q)
+                {
+                    break;
+                }
             }
-            return nullptr;
+            if(p!=q)
+                return nullptr;
+            
+            q=head;
+            
+            while(p!=q)
+            {
+                p=p->next;
+                q=q->next;
+            }
+            
+            return p;
         }
 };
