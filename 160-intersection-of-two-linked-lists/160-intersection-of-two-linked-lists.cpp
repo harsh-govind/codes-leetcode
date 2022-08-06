@@ -1,9 +1,9 @@
 /**
  *Definition for singly-linked list.
  *struct ListNode {
- *  int val;
- *  ListNode * next;
- *  ListNode(int x) : val(x), next(NULL) {}
+ *int val;
+ *ListNode * next;
+ *ListNode(int x) : val(x), next(NULL) {}
  *};
  */
 class Solution
@@ -11,30 +11,39 @@ class Solution
     public:
         ListNode* getIntersectionNode(ListNode *a, ListNode *b)
         {
-            ListNode *p = a, *ans = nullptr;
-            while (p)
-            {
-                p->val = -1 *p->val;
-                p = p->next;
-            }
+           	//first best optimal approach is to count the lenght of the node
+           	//second best optiomal approach is to make p1 to p2 if p1 will be null or vice versa
+            ListNode *p = a, *q = b;
 
-            p = b;
-            while (p)
+            while (1)
             {
-                if (p->val < 0)
+                if (p == q)
                 {
-                    ans = p;
-                    break;
+                    return p;
                 }
-                p = p->next;
+                if (p)
+                {
+                    p = p->next;
+                }
+                if (q)
+                {
+                    q = q->next;
+                }
+                if (p == nullptr and q == nullptr)
+                {
+                    return nullptr;
+                }
+                
+                if (!p)
+                {
+                    p = b;
+                }
+                if (!q)
+                {
+                    q = a;
+                }
+                
             }
-
-            p = a;
-            while (p)
-            {
-                p->val = -1 *p->val;
-                p = p->next;
-            }
-            return ans;
+            return nullptr;
         }
 };
