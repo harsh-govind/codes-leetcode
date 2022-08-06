@@ -33,7 +33,7 @@ class Solution
                 {
                     return nullptr;
                 }
-                
+
                 if (!p)
                 {
                     p = b;
@@ -42,7 +42,6 @@ class Solution
                 {
                     q = a;
                 }
-                
             }
             return nullptr;
         }
