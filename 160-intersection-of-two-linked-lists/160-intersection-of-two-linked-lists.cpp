@@ -1,9 +1,9 @@
 /**
  *Definition for singly-linked list.
  *struct ListNode {
- *    int val;
- *    ListNode * next;
- *    ListNode(int x) : val(x), next(NULL) {}
+ *   int val;
+ *   ListNode * next;
+ *   ListNode(int x) : val(x), next(NULL) {}
  *};
  */
 class Solution
@@ -11,26 +11,30 @@ class Solution
     public:
         ListNode* getIntersectionNode(ListNode *a, ListNode *b)
         {
-            unordered_set<ListNode*> check;
-
-            ListNode *p = a;
-
+            ListNode *p = a, *ans = nullptr;
             while (p)
             {
-                check.insert(p);
+                p->val = -1 *p->val;
                 p = p->next;
             }
 
             p = b;
-
             while (p)
             {
-                if (check.find(p) != check.end())
+                if (p->val < 0)
                 {
-                    return p;
+                    ans = p;
+                    break;
                 }
                 p = p->next;
             }
-            return nullptr;
+
+            p = a;
+            while (p)
+            {
+                p->val = -1 *p->val;
+                p = p->next;
+            }
+            return ans;
         }
 };
