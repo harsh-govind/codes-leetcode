@@ -7,7 +7,7 @@ class Solution
             do {
                 slow = nums[slow];
                 fast = nums[nums[fast]];
-            } while ((slow != fast));
+            } while (slow != fast);
 
             slow = nums[0];
 
