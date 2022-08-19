@@ -11,10 +11,6 @@ class Solution
             {
                 m[val]++;
             }
-            for (auto &val: m)
-            {
-                cout << val.first << " " << val.second << endl;
-            }
 
             for (auto &val: m)
             {
