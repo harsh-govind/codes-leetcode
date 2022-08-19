@@ -3,15 +3,12 @@ class Solution
     public:
         vector<int> replaceElements(vector<int> &a)
         {
-            for (int i = 0; i < a.size() - 1; i++)
+            int maxElement = a[a.size() - 1];
+            for (int i = a.size()-1; i>=0; i--)
             {
-                int temp = INT_MIN;
-                for (int j = i + 1; j < a.size(); j++)
-                {
-                    temp = max(temp, a[j]);
-                }
-
-                a[i] = temp;
+                int temp = a[i];
+                a[i] = maxElement;
+                maxElement=max(maxElement, temp);
             }
 
             a[a.size() - 1] = -1;
