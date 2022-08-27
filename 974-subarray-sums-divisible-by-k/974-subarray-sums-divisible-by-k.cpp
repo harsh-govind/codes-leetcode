@@ -9,15 +9,11 @@ class Solution
             for (auto &val: nums)
             {
                 sum += val;
-                cout<<sum<<" ";
-                int temp=sum%k;
-                
-                if(temp<0)
+                int temp = sum % k;
+                if (temp < 0)
                 {
-                    temp+=k;
+                    temp += k;
                 }
-                
-                cout<<temp<<endl;
                 if (rem.find(temp) != rem.end())
                 {
                     ans += rem[temp];
