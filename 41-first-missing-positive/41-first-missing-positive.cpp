@@ -3,7 +3,7 @@ class Solution
     public:
         int firstMissingPositive(vector<int> &nums)
         {
-            
+
             map<int, int> m;
 
             for (int i = 1; i <= nums.size(); i++)
@@ -21,13 +21,13 @@ class Solution
 
             for (auto &val: m)
             {
-                cout<<val.first<<" "<<val.second<<endl;
+                cout << val.first << " " << val.second << endl;
                 if (val.second == 0)
                     return val.first;
             }
 
             auto last = m.end();
             last--;
-            return last->first+1;
+            return last->first + 1;
         }
 };
