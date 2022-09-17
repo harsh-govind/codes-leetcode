@@ -8,7 +8,7 @@ class Solution
         }
     int largestRectangleArea(vector<int> &h)
     {
-    
+
         if (!check(h, h.size()))
         {
             return h.size() *h[0];
