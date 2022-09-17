@@ -6,15 +6,16 @@ class Solution
             vector<int> ans;
             stack<int> s;
 
-            for (int i= (2*nums.size())-1; i >=0; i--) {
-                while(!s.empty() and s.top()<=nums[i%nums.size()])
+            for (int i = (2 *nums.size()) - 1; i >= 0; i--)
+            {
+                while (!s.empty() and s.top() <= nums[i % nums.size()])
                 {
                     s.pop();
                 }
-                
-                if(i<nums.size())
+
+                if (i < nums.size())
                 {
-                    if(!s.empty())
+                    if (!s.empty())
                     {
                         ans.push_back(s.top());
                     }
@@ -23,7 +24,7 @@ class Solution
                         ans.push_back(-1);
                     }
                 }
-                s.push(nums[i%nums.size()]);
+                s.push(nums[i % nums.size()]);
             }
 
             reverse(ans.begin(), ans.end());
