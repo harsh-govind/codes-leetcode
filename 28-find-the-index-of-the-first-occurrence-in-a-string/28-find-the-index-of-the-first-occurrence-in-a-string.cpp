@@ -3,6 +3,9 @@ class Solution
     public:
         int strStr(string hay, string nee)
         {
+            ios_base::sync_with_stdio(false);
+            cin.tie(NULL);
+            cout.tie(NULL);
             if (hay.size() < nee.size())
             {
                 return -1;
@@ -11,7 +14,7 @@ class Solution
                 return 0;
             int n = hay.size(), m = nee.size();
 
-            for (int i = 0; i < hay.size() - m+1; i++)
+            for (int i = 0; i < hay.size() - m + 1; i++)
             {
                 string a = string(hay.begin() + i, hay.begin() + m + i);
                 if (a == nee) return i;
