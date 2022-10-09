@@ -17,10 +17,10 @@ class Solution
             for (auto &v: k)
             {
                 currAns = 1;
-                if (!s.count(v - 1))
+                if (s.find(v - 1) == s.end())
                 {
                     int temp = v;
-                    while (s.count(temp+1))
+                    while (s.find(temp+1) != s.end())
                     {
                         currAns++;
                         temp++;
