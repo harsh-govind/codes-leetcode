@@ -4,9 +4,6 @@ class Solution
 
         int longestConsecutive(vector<int> &k)
         {
-            ios_base::sync_with_stdio(false);
-            cin.tie(NULL);
-
             unordered_set<int> s;
 
             for (auto &v: k)
