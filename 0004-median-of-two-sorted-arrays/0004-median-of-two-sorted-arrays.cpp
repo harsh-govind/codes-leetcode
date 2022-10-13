@@ -34,24 +34,14 @@ class Solution
                 c.push_back(b[j]);
             }
             
-            
-            for(int i=0; i<m+n;i++)
-            {
-                cout<<c[i]<<endl;
-            }
-            cout<<endl;
-
+            n = m + n;
             if (c.size() % 2 == 0)
             {
-                n = m + n;
-                cout << c[n / 2] << " " << c[(n / 2) - 1] << endl;
                 return (double)(c[(n - 1) / 2] + c[n / 2]) / 2.0;
             }
             else
             {
-                n = m + n;
                 cout << c[n / 2] << endl;
-
                 return c[n / 2];
             }
         }
