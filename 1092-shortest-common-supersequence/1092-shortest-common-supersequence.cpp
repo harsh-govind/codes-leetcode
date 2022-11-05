@@ -7,11 +7,11 @@ class Solution
             int t[m + 1][n + 1];
             for (int i = 0; i < m + 1; i++)
             {
-                t[i][0]=0;
+                t[i][0] = 0;
             }
             for (int i = 0; i < n + 1; i++)
             {
-                t[0][i]=0;
+                t[0][i] = 0;
             }
 
             for (int i = 1; i < m + 1; i++)
@@ -59,7 +59,7 @@ class Solution
             while (i > 0)
             {
                 ans.push_back(a[i - 1]);
-                    i--;
+                i--;
             }
 
             while (j > 0)
