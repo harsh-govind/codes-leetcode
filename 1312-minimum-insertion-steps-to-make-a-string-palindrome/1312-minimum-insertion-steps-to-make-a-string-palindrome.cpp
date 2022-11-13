@@ -4,7 +4,7 @@ class Solution
         int minInsertions(string s)
         {
             string a = s, b = s;
-            int m=a.size(), n=a.size();
+            int m = a.size(), n = a.size();
             reverse(b.begin(), b.end());
             int t[m + 1][n + 1];
             for (int i = 0; i < n + 1; i++)
