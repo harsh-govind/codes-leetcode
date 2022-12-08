@@ -13,7 +13,7 @@ class Solution
                 if (v[mid] == key)
                 {
                     ans = true;
-                    e = mid - 1;
+                    return ans;
                 }
                 else if (v[mid] > key)
                 {
