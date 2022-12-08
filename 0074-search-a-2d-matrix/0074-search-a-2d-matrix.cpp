@@ -1,51 +1,31 @@
 class Solution
 {
     public:
-        int isPresent(vector<int> &v, int key)
+        bool searchMatrix(vector<vector < int>> &matrix, int target)
         {
-            int s = 0;
-            int e = v.size() - 1;
-            int mid;
-            bool ans = false;
-            while (s <= e)
+            int m = matrix.size(), n = matrix[0].size();
+            int lo = 0, hi = m *n - 1;
+
+            while (lo <= hi)
             {
-                mid = (s + e) / 2;
-                if (v[mid] == key)
+                int mid = lo + (hi - lo) / 2;
+
+                int key = matrix[mid / n][mid % n];
+
+                if (key == target)
                 {
-                    ans = true;
-                    return ans;
+                    return true;
                 }
-                else if (v[mid] > key)
+                else if (key > target)
                 {
-                    e = mid - 1;
+                    hi = mid - 1;
                 }
                 else
                 {
-                    s = mid + 1;
+                    lo = mid + 1;
                 }
             }
-            return ans;
+
+            return 0;
         }
-    bool searchMatrix(vector<vector < int>> &matrix, int target)
-    {
-        int m = matrix.size();
-        int n = matrix[0].size();
-
-        for (int i = 0; i < m; i++)
-        {
-            if (matrix[i][0] <= target and target <= matrix[i][n - 1])
-            {
-                vector<int> temp;
-
-                for (int j = 0; j < n; j++)
-                {
-                    cout << matrix[i][j] << " ";
-                    temp.push_back(matrix[i][j]);
-                }
-
-                return isPresent(temp, target);
-            }
-        }
-        return 0;
-    }
 };
