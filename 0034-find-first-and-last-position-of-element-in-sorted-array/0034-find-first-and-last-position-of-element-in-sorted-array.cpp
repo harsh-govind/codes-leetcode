@@ -58,7 +58,7 @@ class Solution
 
         int a = lb(v, target);
         int b = ub(v, target);
-        
+
         ans.push_back(a);
         ans.push_back(b);
         return ans;
