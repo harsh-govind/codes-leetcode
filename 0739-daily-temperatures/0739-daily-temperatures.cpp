@@ -16,23 +16,22 @@ class Solution
                 }
                 else
                 {
-                    
-                        while (!stk.empty() and t[stk.top()] <= t[i])
-                        {
-                            stk.pop();
-                        }
 
-                        if (stk.size() == 0)
-                        {
-                            ans[i] = 0;
-                            stk.push(i);
-                        }
-                        else
-                        {
-                            ans[i] = stk.top() - i;
-                            stk.push(i);
-                        }
-                    
+                    while (!stk.empty() and t[stk.top()] <= t[i])
+                    {
+                        stk.pop();
+                    }
+
+                    if (stk.size() == 0)
+                    {
+                        ans[i] = 0;
+                        stk.push(i);
+                    }
+                    else
+                    {
+                        ans[i] = stk.top() - i;
+                        stk.push(i);
+                    }
                 }
             }
             return ans;
