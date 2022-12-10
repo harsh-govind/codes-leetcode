@@ -16,7 +16,6 @@ class Solution
             {
                 if (m.find(i) == m.end())
                 {
-                    cout << "sec";
                     return false;
                 }
             }
