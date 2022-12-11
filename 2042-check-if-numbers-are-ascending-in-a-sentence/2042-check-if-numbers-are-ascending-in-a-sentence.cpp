@@ -22,22 +22,17 @@ class Solution
                     v.push_back(stoi(temp));
                 }
             }
-            for (auto &val: v)
-            {
-                cout << val << " ";
-            }
-            cout << endl;
 
             auto i2 = adjacent_find(v.begin(), v.end(), greater_equal<int> ());
             if (i2 == v.end())
             {
-               return true;
+                return true;
             }
             else
             {
-               return false;
+                return false;
             }
-            cout<<"last"<<endl;
+            cout << "last" << endl;
             return false;
         }
 };
