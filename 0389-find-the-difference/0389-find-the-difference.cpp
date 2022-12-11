@@ -18,7 +18,6 @@ class Solution
 
             for (auto &val: st)
             {
-                cout<<val.first<<val.second<<endl;
                 if (val.second%2 !=0)
                     return val.first;
             }
