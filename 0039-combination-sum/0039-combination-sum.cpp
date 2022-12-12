@@ -1,6 +1,7 @@
 class Solution
 {
     public:
+
         void findAns(int i, int target, vector<int> &temp, vector<vector< int >> &ans, vector< int > &arr)
         {
             if (i == arr.size())
@@ -19,10 +20,12 @@ class Solution
                 temp.pop_back();
             }
 
-            findAns(i + 1, target , temp, ans, arr);
+            findAns(i + 1, target, temp, ans, arr);
         }
     vector<vector < int>> combinationSum(vector<int> &candidates, int target)
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         vector<vector < int>> ans;
         vector<int> temp;
         findAns(0, target, temp, ans, candidates);
