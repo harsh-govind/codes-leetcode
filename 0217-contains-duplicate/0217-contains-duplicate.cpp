@@ -1,18 +1,20 @@
-class Solution {
-public:
-    bool containsDuplicate(vector<int>& nums) {
-        unordered_map<int, int> m;
-        for(auto &val:nums)
+class Solution
+{
+    public:
+        bool containsDuplicate(vector<int> &nums)
         {
-            if(m.find(val)==m.end())
+            unordered_set<int> m;
+            for (auto &val: nums)
             {
-                m[val]=1;
+                if (m.find(val) == m.end())
+                {
+                    m.insert(val);
+                }
+                else
+                {
+                    return true;
+                }
             }
-            else
-            {
-                return true;
-            }
+            return false;
         }
-        return false;
-    }
 };
