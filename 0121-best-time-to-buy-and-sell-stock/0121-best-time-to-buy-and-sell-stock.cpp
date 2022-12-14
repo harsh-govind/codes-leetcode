@@ -5,18 +5,12 @@ class Solution
         {
             ios_base::sync_with_stdio(false);
             cin.tie(NULL);
-            int mn = INT_MAX, mx = 0, n = v.size();
+            int mnSoFar = INT_MAX, maxProfit = 0, n = v.size();
             for (int i = 0; i < n; i++)
             {
-                if (mn > v[i])
-                {
-                    mn = v[i];
-                }
-                else if (mx < (v[i] - mn))
-                {
-                    mx = v[i] - mn;
-                }
+                mnSoFar = min(mnSoFar, v[i]);
+                maxProfit = max(maxProfit, v[i] - mnSoFar);
             }
-            return mx;
+            return maxProfit;
         }
 };
