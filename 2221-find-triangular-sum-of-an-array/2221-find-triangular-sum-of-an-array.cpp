@@ -5,7 +5,6 @@ class Solution
         {
             ios_base::sync_with_stdio(false);
             cin.tie(NULL);
-            vector<int> store = nums;
             int n = nums.size();
             for (int i = 1; i < n; i++)
             {
