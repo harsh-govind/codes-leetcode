@@ -12,10 +12,10 @@ class Solution
                 vector<int> k;
                 for (int j = 0; j < n - i; j++)
                 {
-                    k.push_back((store[j] + store[j + 1]) % 10);
+                    k.push_back((nums[j] + nums[j + 1]) % 10);
                 }
-                store = k;
+                nums = k;
             }
-            return store[0];
+            return nums[0];
         }
 };
