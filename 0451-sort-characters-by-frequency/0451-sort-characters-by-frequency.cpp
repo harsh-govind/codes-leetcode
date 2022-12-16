@@ -11,7 +11,6 @@ class Solution
             multimap<int, char, greater < int>> fn;
             for (auto &val: arr)
             {
-                cout << val.first << " " << val.second << endl;
                 fn.insert(make_pair(val.second, val.first));
             }
             string ans = "";
