@@ -13,7 +13,7 @@ class Solution
     public:
         ListNode* deleteDuplicates(ListNode *head)
         {
-            set<int> ss;
+            unordered_set<int> ss;
 
             ListNode *p = head, *prev = head;
 
