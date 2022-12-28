@@ -14,15 +14,13 @@ class Solution
         int getDecimalValue(ListNode *head)
         {
             ListNode *p = head;
-            long long i = 0, ans = 0;
+            long long i = -1, ans = 0;
 
             while (p)
             {
                 i++;
                 p = p->next;
             }
-            cout << i << endl;
-            i--;
             p = head;
             while (p)
             {
