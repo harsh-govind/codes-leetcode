@@ -8,7 +8,7 @@ class Solution
             set < long long > s;
             long long check = 1;
             s.insert(1);
-            for (int i = 0; i <= 21; i++)
+            for (int i = 0; i <= 20; i++)
             {
                 s.insert(check *= 3);
             }
