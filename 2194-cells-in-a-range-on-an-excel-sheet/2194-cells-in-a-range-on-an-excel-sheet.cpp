@@ -11,7 +11,6 @@ class Solution
                     string temp = "";
                     temp += i;
                     temp += j;
-                    cout << temp << endl;
                     ans.push_back(temp);
                 }
             }
