@@ -24,7 +24,7 @@ class Solution
                 {
                     return idx == i;
                 }
-                else if(arr[i-1]==arr[i])
+                else if (arr[i - 1] == arr[i])
                 {
                     return false;
                 }
