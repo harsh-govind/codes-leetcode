@@ -9,11 +9,11 @@ class Solution
             {
                 for (int j = 0; j < m; j++)
                 {
-                    if (i == j or i + j == m-1)
+                    if (i == j or i + j == m - 1)
                     {
                         if (grid[i][j] == 0)
                         {
-                            cout<<"first";
+                            cout << "first";
                             return false;
                         }
                     }
@@ -21,8 +21,8 @@ class Solution
                     {
                         if (grid[i][j] != 0)
                         {
-                            
-                            cout<<"second"<<" "<<i<<" "<<j;
+
+                            cout << "second" << " " << i << " " << j;
 
                             return false;
                         }
