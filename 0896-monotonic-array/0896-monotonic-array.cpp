@@ -3,10 +3,25 @@ class Solution
     public:
         bool isMonotonic(vector<int> &nums)
         {
-            vector<int> inc = nums, dec = nums;
-            sort(inc.begin(), inc.end());
-            sort(dec.begin(), dec.end(), greater<int> ());
+            bool inc = true;
+            for (int i = 1; i < nums.size(); i++)
+            {
+                if (nums[i] < nums[i - 1])
+                {
+                    inc = false;
+                    break;
+                }
+            }
+            bool dec = true;
+            for (int i = 1; i < nums.size(); i++)
+            {
+                if (nums[i] > nums[i - 1])
+                {
+                    dec = false;
+                    break;
+                }
+            }
 
-            return inc == nums or dec == nums;
+            return dec or inc;
         }
 };
