@@ -6,16 +6,13 @@ class Solution
             int ans = 0;
             for (int i = 0; i < strs[0].size(); i++)
             {
-                string word = "";
-                for (int j = 0; j < strs.size(); j++)
+                for (int j = 1; j < strs.size(); j++)
                 {
-                    word += strs[j][i];
-                }
-                string sortedword = word;
-                sort(sortedword.begin(), sortedword.end());
-                if (sortedword != word)
-                {
-                    ans++;
+                    if (strs[j][i] < strs[j - 1][i])
+                    {
+                        ans++;
+                        break;
+                    }
                 }
             }
             return ans;
