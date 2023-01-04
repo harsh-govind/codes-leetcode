@@ -19,10 +19,10 @@ class Solution
 
                 int num = val.second;
 
-                ans += num/3;
-                num%=3;
-                ans+=num/2;
-                ans+=num%2;
+                ans += num / 3;
+                num %= 3;
+                ans += num / 2;
+                ans += num % 2;
             };
             return ans;
         }
