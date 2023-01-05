@@ -14,7 +14,7 @@ class Solution
             {
                 if (mp.find(s[i]) == mp.end())
                 {
-                    if(st.find(t[i])!=st.end())
+                    if (st.find(t[i]) != st.end())
                     {
                         return false;
                     }
