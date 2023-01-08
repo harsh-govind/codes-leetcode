@@ -3,16 +3,16 @@ class Solution
     public:
         int findFinalValue(vector<int> &nums, int original)
         {
-            unordered_set<int> s;
-            for (int i = 0; i < nums.size(); i++)
+            unordered_set<int> st;
+            for (auto &val: nums)
             {
-                s.insert(nums[i]);
+                st.insert(val);
+            }
+            while (st.find(original) != st.end())
+            {
+                original=(original*2);
             }
 
-            while (s.find(original) != s.end())
-            {
-                original *= 2;
-            }
             return original;
         }
 };
