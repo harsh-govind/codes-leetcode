@@ -3,7 +3,7 @@ class Solution
     public:
         string destCity(vector<vector < string>> &paths)
         {
-            set<string> s;
+            unordered_set<string> s;
 
             for (auto &val: paths)
             {
