@@ -1,66 +1,64 @@
 class Solution
 {
     public:
-        int lb(vector<int> &v, int key)
+        vector<int> searchRange(vector<int> &nums, int x)
         {
-            int s = 0;
-            int e = v.size() - 1;
-            int mid;
-            int ans = -1;
-            while (s <= e)
+            int n = nums.size();
+
+            vector<int> ans;
+
+            int m, l = 0, h = n - 1, k;
+
+            if (find(nums.begin(), nums.end(), x) == nums.end())
             {
-                mid = (s + e) / 2;
-                if (v[mid] == key)
+                ans.push_back(-1);
+                ans.push_back(-1);
+                return ans;
+            }
+
+            while (l <= h)
+            {
+                m = l + (h - l) / 2;
+
+                if (nums[m] == x)
                 {
-                    ans = mid;
-                    e = mid - 1;
+                    k = m;
+                    h = m - 1;
                 }
-                else if (v[mid] > key)
+                else if (nums[m] > x)
                 {
-                    e = mid - 1;
+                    h = m - 1;
                 }
                 else
                 {
-                    s = mid + 1;
+                    l = m + 1;
                 }
             }
+
+            ans.push_back(k);
+            l = 0;
+            h = n - 1;
+            while (l <= h)
+            {
+                m = l + (h - l) / 2;
+
+                if (nums[m] == x)
+                {
+                    k = m;
+                    l = m + 1;
+                }
+                else if (nums[m] > x)
+                {
+                    h = m - 1;
+                }
+                else
+                {
+                    l = m + 1;
+                }
+            }
+
+            ans.push_back(k);
+
             return ans;
         }
-   	//upper bound binary search
-    int ub(vector<int> &v, int key)
-    {
-        int s = 0;
-        int e = v.size() - 1;
-        int mid;
-        int ans = -1;
-        while (s <= e)
-        {
-            mid = (s + e) / 2;
-            if (v[mid] == key)
-            {
-                ans = mid;
-                s = mid + 1;
-            }
-            else if (v[mid] > key)
-            {
-                e = mid - 1;
-            }
-            else
-            {
-                s = mid + 1;
-            }
-        }
-        return ans;
-    }
-    vector<int> searchRange(vector<int> &v, int target)
-    {
-        vector<int> ans;
-
-        int a = lb(v, target);
-        int b = ub(v, target);
-
-        ans.push_back(a);
-        ans.push_back(b);
-        return ans;
-    }
 };
