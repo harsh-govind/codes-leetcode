@@ -3,8 +3,8 @@ class Solution
     public:
         int peakIndexInMountainArray(vector<int> &arr)
         {
-            ios_base::sync_with_stdio(false);
-            cin.tie(NULL);
+            std::ios::sync_with_stdio(false);
+            std::cin.tie(nullptr);
 
             int l = 1, h = arr.size() - 2;
 
