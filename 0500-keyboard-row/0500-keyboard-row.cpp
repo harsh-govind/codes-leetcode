@@ -7,7 +7,7 @@ public:
 
         vector<string> ans;;
 
-        for (string word : words)
+        for (string &word : words)
         {
             int r = 0;
             if (row1.count(tolower(word[0])))
