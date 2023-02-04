@@ -12,8 +12,8 @@ class Solution
         }
     bool checkInclusion(string s1, string s2)
     {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
+        std::ios::sync_with_stdio(false);
+        std::cin.tie(nullptr);
 
         if (s1.size() > s2.size())
         {
