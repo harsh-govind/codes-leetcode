@@ -12,6 +12,8 @@ class Solution
         }
     vector<int> findAnagrams(string s2, string s1)
     {
+        std::ios::sync_with_stdio(false);
+        std::cin.tie(nullptr);
         if (s1.size() > s2.size())
         {
             vector<int> ans;
