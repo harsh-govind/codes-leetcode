@@ -18,6 +18,7 @@ class Solution
 
     int shipWithinDays(vector<int> &weights, int days)
     {
+        //midsem
         int totalLoad = 0, maxLoad = 0;
         for (int weight: weights)
         {
