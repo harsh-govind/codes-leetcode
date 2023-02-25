@@ -3,7 +3,7 @@ class Solution
     public:
         vector<int> twoSum(vector<int> &v, int key)
         {
-            
+            //trip trip trip
             unordered_map<int, int> s;
             int n = v.size();
             vector<int> ans;
