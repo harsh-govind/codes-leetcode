@@ -3,6 +3,9 @@ class Solution
     public:
         int findKthPositive(vector<int> &arr, int k)
         {
+            std::ios_base::sync_with_stdio(false);
+            std::cin.tie(NULL);
+
             unordered_set<int> s;
             for (auto &val: arr)
             {
