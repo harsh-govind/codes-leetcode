@@ -9,7 +9,7 @@ class Solution
                 s.insert(val);
             }
             vector<int> v;
-            for (int i = 1; i <= 1000000; i++)
+            for (int i = 1; i <= 100000; i++)
             {
                 if (s.find(i) == s.end())
                 {
