@@ -12,6 +12,7 @@ class Solution
     {
         if (!root) return true;
         //done done done, already done
+         //done done done, already done
         return areMirrorImage(root->left, root->right);
     }
 };
