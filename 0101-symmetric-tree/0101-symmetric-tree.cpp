@@ -11,7 +11,7 @@ class Solution
     bool isSymmetric(TreeNode *root)
     {
         if (!root) return true;
-
+        //done done done, already done
         return areMirrorImage(root->left, root->right);
     }
 };
