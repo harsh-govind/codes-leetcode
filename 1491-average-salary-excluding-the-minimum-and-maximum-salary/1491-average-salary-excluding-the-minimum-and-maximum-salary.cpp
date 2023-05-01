@@ -12,8 +12,7 @@ class Solution
                 mn = min(mn, val);
                 mx = max(mx, val);
             }
-            cout<<mn<<" "<<mx<<endl;
-            cout<<sum-mn-mx;
+
             return (sum - (mn + mx)) / (salary.size() - 2);
         }
 };
