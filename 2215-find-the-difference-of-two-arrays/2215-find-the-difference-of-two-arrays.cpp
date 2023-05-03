@@ -15,32 +15,22 @@ class Solution
                 second.insert(val);
             }
 
-            unordered_set<int> one, two;
-
-            for (auto &val: nums1)
-            {
-                if (second.find(val) == second.end())
-                {
-                    one.insert(val);
-                }
-            }
-            for (auto &val: nums2)
-            {
-                if (first.find(val) == first.end())
-                {
-                    two.insert(val);
-                }
-            }
 
             vector<vector < int>> ans;
             vector<int> temp1, temp2;
-            for (auto &val: one)
+            for (auto &val: first)
             {
-                temp1.push_back(val);
+                if(second.find(val)==second.end())
+                {
+                    temp1.push_back(val);
+                }
             }
-            for (auto &val: two)
+            for (auto &val: second)
             {
-                temp2.push_back(val);
+                if(first.find(val)==first.end())
+                {
+                    temp2.push_back(val);
+                }
             }
 
             ans.push_back(temp1);
