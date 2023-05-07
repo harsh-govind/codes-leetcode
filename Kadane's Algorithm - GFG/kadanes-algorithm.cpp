@@ -14,20 +14,19 @@ class Solution{
         bool flag=true;
         for(int i=0; i<n; i++)
         {
-            currSum+=arr[i];
-            if(arr[i]>0)
+            mx=max(int(mx), int(arr[i]));
+            if(arr[i]>=0)
             {
                 flag=false;
             }
-            mx=max(int(arr[i]), int(mx));
-            maxSum=max(currSum, maxSum);
-            
+            currSum+=arr[i];
+            maxSum=max(maxSum, currSum);
             if(currSum<0)
             {
                 currSum=0;
             }
-            
         }
+        
         if(flag)
         {
             return mx;
