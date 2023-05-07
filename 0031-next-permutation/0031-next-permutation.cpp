@@ -12,6 +12,7 @@ class Solution
                     break;
                 }
             }
+            cout<<beforeTop<<endl;
             if (beforeTop == -1)
             {
                 reverse(nums.begin(), nums.end());
