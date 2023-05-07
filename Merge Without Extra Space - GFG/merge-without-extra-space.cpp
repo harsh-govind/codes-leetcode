@@ -9,44 +9,23 @@ class Solution{
         //Function to merge the arrays.
         void merge(long long a[], long long b[], int m, int n) 
         { 
-            int c[m+n], i=0, j=0, k=0;
-            
-            while(i<m and j<n)
+            int left = m-1, right=0;
+            while(left>= 0 and right<n)
             {
-                if(a[i]<b[j])
+                if(a[left]>b[right])
                 {
-                    c[k++]=a[i++];
-                }
-                else if(a[i]>b[j])
-                {
-                    c[k++]=b[j++];
+                    swap(a[left], b[right]);
+                    right++;
+                    left--;
                 }
                 else
                 {
-                    c[k++]=a[i++];
-                    c[k++]=b[j++];
+                    break;
                 }
             }
             
-            for(;i<m; i++)
-            {
-                c[k++]=a[i];
-            }
-            for(;j<n;j++)
-            {
-                c[k++]=b[j];
-            }
-            
-            k=0;
-            
-            for(i=0; i<m; i++)
-            {
-                a[i]=c[k++];
-            }
-            for(i=0; i<n;i++)
-            {
-                b[i]=c[k++];
-            }
+            sort(a, a+m);
+            sort(b, b+n);
         } 
 };
 
