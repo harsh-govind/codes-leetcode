@@ -30,18 +30,21 @@ public:
 	        }
         }
 	    j=k=i=0;
-	    while (j < posCount && k < negCount) {
-        arr[i++] = pos[j++];
-        arr[i++] = neg[k++];
-    }
-
-    while (j < posCount) {
-        arr[i++] = pos[j++];
-    }
-
-    while (k < negCount) {
-        arr[i++] = neg[k++];
-    }
+	    while (j < posCount && k < negCount) 
+	    {
+            arr[i++] = pos[j++];
+            arr[i++] = neg[k++];
+        }
+	    
+	    while(j<posCount)
+	    {
+	        arr[i++]=pos[j++];
+	    }
+	    
+	    while(k<negCount)
+	    {
+	        arr[i++]=neg[k++];
+	    }
 	    
 	}
 };
