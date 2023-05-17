@@ -1,11 +1,11 @@
 /**
  *Definition for singly-linked list.
  *struct ListNode {
- *   int val;
- *   ListNode * next;
- *   ListNode() : val(0), next(nullptr) {}
- *   ListNode(int x) : val(x), next(nullptr) {}
- *   ListNode(int x, ListNode *next) : val(x), next(next) {}
+ *  int val;
+ *  ListNode * next;
+ *  ListNode() : val(0), next(nullptr) {}
+ *  ListNode(int x) : val(x), next(nullptr) {}
+ *  ListNode(int x, ListNode *next) : val(x), next(next) {}
  *};
  */
 class Solution
@@ -13,11 +13,11 @@ class Solution
     public:
         ListNode* reverseKGroup(ListNode *head, int k)
         {
-            vector<int> temp;
+            vector<ListNode*> temp;
             ListNode *p = head;
             while (p)
             {
-                temp.push_back(p->val);
+                temp.push_back(p);
                 p = p->next;
             }
 
@@ -31,14 +31,12 @@ class Solution
                 reverse(temp.begin() + i, temp.begin() + i + k);
             }
 
-            int i=0;
-            p=head;
-            while(p)
+            for (int i = 0; i < temp.size()-1; i++)
             {
-                p->val=temp[i++];
-                p=p->next;
+                temp[i]->next=temp[i+1];
             }
-
-            return head;
+            temp[temp.size()-1]->next=nullptr;
+            
+            return temp[0];
         }
 };
