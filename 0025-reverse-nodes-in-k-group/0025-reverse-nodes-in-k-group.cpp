@@ -21,11 +21,6 @@ class Solution
                 p = p->next;
             }
 
-            for (int i = 0; i < temp.size(); i++)
-            {
-                cout << temp[i] << " ";
-            }
-            cout << endl;
             for (int i = 0; i < temp.size() - temp.size() % k; i += k)
             {
                 reverse(temp.begin() + i, temp.begin() + i + k);
