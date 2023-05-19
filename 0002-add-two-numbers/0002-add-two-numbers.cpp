@@ -70,8 +70,8 @@ public:
         }
         if(carry !=0)
         {
-            ListNode *temp1=new ListNode(carry);
-            k->next=temp1;
+            ListNode *temp2=new ListNode(carry);
+            k->next=temp2;
         }
         return ans;
     }
