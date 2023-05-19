@@ -117,9 +117,10 @@ Node* findIntersection(Node* head1, Node* head2)
                 
             // while(q->next and q->next->data == q->data)
             //     q=q->next;
+            p=p->next;
+            q=q->next;
         }
-        p=p->next;
-        q=q->next;
+       
     }
     
     return ans;
