@@ -111,26 +111,41 @@ struct Node{
 
 /*  Function which returns the  root of 
     the flattened linked list. */
+Node *mergeLists(Node *a, Node *b)
+{
+    Node *dummy=new Node(-1);
+    Node *ans=dummy;
+    
+    while(a and b)
+    {
+        if(a->data < b->data)
+        {
+            dummy->bottom=a;
+            a=a->bottom;
+            dummy=dummy->bottom;
+        }
+        else
+        {
+            dummy->bottom=b;
+            dummy=dummy->bottom;
+            b=b->bottom;
+        }
+    }
+    
+    if(a) dummy->bottom=a;
+    else  dummy->bottom=b;
+    
+    return ans->bottom;
+}
 Node *flatten(Node *root)
 {
-   multiset<int> s;
+   if(!root or !root->next) return root;
    
-   Node *p=root;
-   while(p)
-   {
-       Node *q=p;
-       while(q)
-       {
-           s.insert(q->data);
-           q=q->bottom;
-       }
-       p=p->next;
-   }
-   for(auto &val:s)
-   {
-       cout<<val<<" ";
-   }
-   return NULL;
+   root->next=flatten(root->next);
+   
+   root= mergeLists(root, root->next);
+   
+   return root;
    
 }
 
