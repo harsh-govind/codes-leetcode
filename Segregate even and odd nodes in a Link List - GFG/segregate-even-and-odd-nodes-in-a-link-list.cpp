@@ -43,33 +43,42 @@ class Solution{
 public:
     Node* divide(int N, Node *head){
         // code here
-        vector<int> v;
+        if(!head or !head->next)
+        {
+            return head;
+        }
+        Node *dummy= new Node(0);
+        Node *ans=dummy;
+        Node *prev=NULL;
+        while(head and head->data %2==0)
+        {
+            prev=head;
+            head=head->next;
+            prev->next=NULL;
+            dummy->next=prev;
+            dummy=dummy->next;
+        }
+        
         Node *p=head;
-        while(p)
+        while (p)
         {
-            if(p->data%2==0)
+            if(p->data %2!=0)
             {
-                v.push_back(p->data);
+                prev=p;
+                p=p->next;
             }
-            p=p->next;
-        }
-        p=head;
-        while(p)
-        {
-            if(p->data%2!=0)
+            else
             {
-                v.push_back(p->data);
+                dummy->next=prev->next;
+                dummy=dummy->next;
+                prev->next=p->next;
+                p=p->next;
+                dummy->next=NULL;
             }
-            p=p->next;
         }
-        p=head;
-        int i=0;
-        while(p)
-        {
-            p->data=v[i++];
-            p=p->next;
-        }
-        return head;
+        dummy->next=head;
+        return ans->next;
+        
     }
 };
 
