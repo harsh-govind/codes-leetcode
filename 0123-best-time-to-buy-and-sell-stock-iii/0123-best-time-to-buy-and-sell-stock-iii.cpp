@@ -1,14 +1,18 @@
 class Solution {
 public:
-    int maxProfit(std::vector<int>& prices) {
-        int buy1 = INT_MAX, buy2 = INT_MAX;
-        int sell1 = 0, sell2 = 0;
-        for (int i = 0; i < prices.size(); i++) {
-            buy1 = std::min(buy1, prices[i]);
-            sell1 = std::max(sell1, prices[i] - buy1);
-            buy2 = std::min(buy2, prices[i] - sell1);
-            sell2 = std::max(sell2, prices[i] - buy2);
+    int maxProfit(vector<int>& prices) {
+        int currMin1=INT_MAX, currMin2=INT_MAX, profit1=0, profit2=0;
+        
+        for(auto &val:prices)
+        {
+            currMin1=min(currMin1, val);
+            int currProfit1=val-currMin1;
+            profit1=max(profit1, currProfit1);
+            
+            currMin2=min(currMin2, val-profit1);
+            int currProfit2=val-currMin2;
+            profit2=max(profit2, currProfit2);
         }
-        return sell2;
+        return profit2;
     }
 };
