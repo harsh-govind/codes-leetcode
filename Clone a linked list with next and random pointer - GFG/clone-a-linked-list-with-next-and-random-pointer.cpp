@@ -49,11 +49,12 @@ class Solution
         p=head;
         Node *newHead=p->next;
         
-        while(p and p->next)
+        while(p)
         {
             Node *temp=p->next;
-            p->next=p->next->next;
-                if(temp->next)
+            if(p->next)
+                p->next=p->next->next;
+            if(temp->next)
             temp->next=temp->next->next;
             p=p->next;
         }
