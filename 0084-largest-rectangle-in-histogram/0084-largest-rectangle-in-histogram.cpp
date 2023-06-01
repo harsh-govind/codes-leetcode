@@ -6,6 +6,9 @@ class Solution
             int n = heights.size();
             vector<int> left(n);
             stack<pair<int, int>> sleft;
+
+            stack<pair<int, int>> sright;
+            vector<int> right(n);
             for (int i = 0; i < n; i++)
             {
                 if (sleft.size() == 0)
@@ -32,41 +35,38 @@ class Solution
                         left[i] = sleft.top().second;
                     }
                 }
-                sleft.push({ heights[i],
-                    i });
-            }
-
-            stack<pair<int, int>> sright;
-            vector<int> right(n);
-            for (int i = n - 1; i >= 0; i--)
-            {
+                sleft.push({ heights[i], i });
+                
+                
                 if (sright.size() == 0)
                 {
-                    right[i] = n;
+                    right[n-i-1] = n;
                 }
-                else if (sright.size() > 0 and sright.top().first < heights[i])
+                else if (sright.size() > 0 and sright.top().first < heights[n-i-1])
                 {
-                    right[i] = sright.top().second;
+                    right[n-i-1] = sright.top().second;
                 }
-                else if (sright.size() > 0 and sright.top().first >= heights[i])
+                else if (sright.size() > 0 and sright.top().first >= heights[n-i-1])
                 {
-                    while (sright.size() > 0 and sright.top().first >= heights[i])
+                    while (sright.size() > 0 and sright.top().first >= heights[n-i-1])
                     {
                         sright.pop();
                     }
 
                     if (sright.size() == 0)
                     {
-                        right[i] = n;
+                        right[n-i-1] = n;
                     }
                     else
                     {
-                        right[i] = sright.top().second;
+                        right[n-i-1] = sright.top().second;
                     }
                 }
-                sright.push({ heights[i],
-                    i });
+                sright.push({ heights[n-i-1],n-i-1 });
+                
             }
+
+            for (int i = n - 1; i >= 0; i--) {}
             int ans = INT_MIN;
             for (int i = 0; i < n; i++)
             {
