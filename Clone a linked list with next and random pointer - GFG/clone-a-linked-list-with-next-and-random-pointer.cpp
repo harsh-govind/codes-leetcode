@@ -46,19 +46,17 @@ class Solution
             p=p->next->next;
         }
         
-        p = head;
-        Node* newHead = p->next;
-
-        while (p && p->next) 
-    {
-        Node* temp = p->next;
-        p->next = p->next->next;
-        if (temp->next)
-            temp->next = temp->next->next;
-        p = p->next;
+        p=head;
+        Node *newHead=p->next;
         
-    }
-
+        while(p and p->next)
+        {
+            Node *temp=p->next;
+            p->next=p->next->next;
+                if(temp->next)
+            temp->next=temp->next->next;
+            p=p->next;
+        }
         return newHead;
     }
 };
