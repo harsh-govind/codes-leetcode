@@ -26,42 +26,41 @@ class Solution
         //Write your code here
         if(!head or !head->next) return head;
         
-        Node *newHead=new Node(-1);
-        
-        Node *p=head, *dummy=newHead;
+        Node *p = head;
         
         while(p)
         {
-            dummy->next=new Node(p->data);
-            dummy=dummy->next;
-            p=p->next;
+            Node *temp = p->next;
+            p->next = new Node(p->data);
+            p->next->next=temp;
+            p=temp;
         }
-        
-        newHead=newHead->next;
-        
+       
         p=head;
-        Node *q=newHead;
-        unordered_map<Node*, Node*> m;
-        while(p and q)
+        while(p)
         {
-            m[p]=q;
-            p=p->next;
-            q=q->next;
+            if(p->arb)
+            {
+                p->next->arb = p->arb->next;
+            }
+            p=p->next->next;
         }
         
-        p=head, q=newHead;
+        p = head;
+        Node* newHead = p->next;
+
+        while (p && p->next) 
+    {
+        Node* temp = p->next;
+        p->next = p->next->next;
+        if (temp->next)
+            temp->next = temp->next->next;
+        p = p->next;
         
-        while(p and q)
-        {
-            q->arb=m[p->arb];
-            p=p->next;
-            q=q->next;
-        }
-        
-        
-        return newHead;
     }
 
+        return newHead;
+    }
 };
 
 //{ Driver Code Starts.
