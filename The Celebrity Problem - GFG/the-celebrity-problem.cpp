@@ -36,14 +36,28 @@ class Solution
                 s.push(i);
             }
         }
-        int possible=s.top(), rowSum=0, colSum=0;
+        // int possible=s.top(), rowSum=0, colSum=0;
+        // for(int i=0; i<n; i++)
+        // {
+        //     rowSum+=m[possible][i];
+        //     colSum+=m[i][possible];
+        // }
+        // if(colSum==n-1 and rowSum==0) return possible;
+        
+        //or
+        
+        int possible=s.top();
         for(int i=0; i<n; i++)
         {
-            rowSum+=m[possible][i];
-            colSum+=m[i][possible];
+            if(i!=possible)
+            {
+                if(m[possible][i]==1 or m[i][possible]==0)
+                {
+                    return -1;
+                }
+            }
         }
-        if(colSum==n-1 and rowSum==0) return possible;
-        return -1;
+        return possible;
     }
 };
 
