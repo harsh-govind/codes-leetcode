@@ -13,33 +13,36 @@ class Solution
     //Function to find if there is a celebrity in the party or not.
     int celebrity(vector<vector<int> >& m, int n) 
     {
-        unordered_set<int> possible;
-        vector<int> col;
+        stack<int> s;
         for(int i=0; i<n; i++)
         {
-            int flag=true, sum=0;
-            for(int j=0; j<n; j++)
-            {
-                if(m[i][j]==1)
-                {
-                    flag=false;
-                }
-                sum+=m[j][i];
-            }
-            if(flag)
-            {
-                possible.insert(i);
-            }
-            col.push_back(sum);
+            s.push(i);
         }
         
-        for(auto &val:possible)
+        while(s.size()>=2)
         {
-            if(col[val]==n-1)
+            int i=s.top();
+            s.pop();
+            int j=s.top();
+            s.pop();
+            
+            //if i knows j then j may be the celebrity
+            if(m[i][j]==1)
             {
-                return val;
+                s.push(j);
+            }
+            else
+            {
+                s.push(i);
             }
         }
+        int possible=s.top(), rowSum=0, colSum=0;
+        for(int i=0; i<n; i++)
+        {
+            rowSum+=m[possible][i];
+            colSum+=m[i][possible];
+        }
+        if(colSum==n-1 and rowSum==0) return possible;
         return -1;
     }
 };
