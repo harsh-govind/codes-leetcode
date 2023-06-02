@@ -14,33 +14,25 @@ class Solution
     int celebrity(vector<vector<int> >& m, int n) 
     {
         unordered_set<int> possible;
+        vector<int> col;
         for(int i=0; i<n; i++)
         {
-            int flag=true;
+            int flag=true, sum=0;
             for(int j=0; j<n; j++)
             {
                 if(m[i][j]==1)
                 {
                     flag=false;
-                    break;
                 }
+                sum+=m[j][i];
             }
             if(flag)
             {
                 possible.insert(i);
             }
-        }
-        
-        vector<int> col;
-        for(int i=0; i<n; i++)
-        {
-            int sum=0;
-            for(int j=0; j<n; j++)
-            {
-                sum+=m[j][i];
-            }
             col.push_back(sum);
         }
+        
         for(auto &val:possible)
         {
             if(col[val]==n-1)
