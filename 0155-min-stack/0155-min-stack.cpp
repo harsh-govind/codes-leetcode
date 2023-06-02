@@ -53,7 +53,7 @@ public:
         return minEle;
     }
     
-    int getMin() {
+    long long getMin() {
         if(s.size()==0)
             return -1;
         return minEle;
