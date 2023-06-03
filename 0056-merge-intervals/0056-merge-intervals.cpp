@@ -6,20 +6,39 @@ class Solution
             sort(arr.begin(), arr.end());
             int n = arr.size(), i = 0;
             vector<vector < int>> ans;
-            while (i < n)
+            stack<pair<int, int>> stk;
+            for (int i = 0; i < n; i++)
             {
-                int low = arr[i][0], high = arr[i][1];
-                i++;
-                while (i < n and arr[i][0] >= low and arr[i][0] <= high)
+                if (stk.empty())
                 {
-                    high = max(high, arr[i][1]);
-                    i++;
+                    stk.push({ arr[i][0],
+                        arr[i][1] });
                 }
+                else
+                {
+                    pair<int, int> temp = stk.top();
+                    stk.pop();
+                    if (arr[i][0] >= temp.first and arr[i][0] <= temp.second)
+                    {
+                        stk.push({ temp.first,
+                            max(temp.second, arr[i][1]) });
+                    }
+                    else
+                    {
+                        stk.push(temp);
+                        stk.push({ arr[i][0],
+                            arr[i][1] });
+                    }
+                }
+            }
 
+            while (!stk.empty())
+            {
                 vector<int> temp;
-                temp.push_back(low);
-                temp.push_back(high);
+                temp.push_back(stk.top().first);
+                temp.push_back(stk.top().second);
                 ans.push_back(temp);
+                stk.pop();
             }
 
             return ans;
