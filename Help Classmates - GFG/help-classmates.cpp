@@ -14,19 +14,33 @@ class Solution{
     vector<int> help_classmate(vector<int> arr, int n) 
     { 
         // Your code goes here
-         stack<int> stk;
-    vector<int> ans(n, -1); // Initialize ans vector with -1
-
-    for(int i = 0; i < n; i++)
-    {
-        while(!stk.empty() && arr[i] < arr[stk.top()])
+        stack<int> stk;
+        vector<int> ans(n);
+        for(int i=n-1; i>=0; i--)
         {
-            ans[stk.top()] = arr[i]; // Update the next smaller element
-            stk.pop();
+            if(stk.size()==0)
+            {
+                ans[i]=-1;
+            }
+            else if(stk.size()>0 and stk.top()<arr[i])
+            {
+                ans[i]=stk.top();
+            }
+            else if(stk.size()>0 and stk.top()>=arr[i])
+            {
+                while(stk.size()>0 and stk.top()>=arr[i])
+                {
+                    stk.pop();
+                }
+                
+                if(stk.size()==0) ans[i]=-1;
+                else if(stk.top()<arr[i]) ans[i]=stk.top();
+        
+            }
+            
+            stk.push(arr[i]);
         }
-        stk.push(i);
-    }
-    return ans;
+        return ans;
     } 
 };
 
