@@ -1,25 +1,16 @@
-class Solution
-{
-    public:
-        int majorityElement(vector<int> &nums)
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int count=0, num=0;
+        for(auto &val:nums)
         {
-            int ans = 0, count = 0;
-            for (auto &val: nums)
+            if(count==0)
             {
-                if (count == 0)
-                {
-                    ans = val;
-                }
-                if (ans == val)
-                {
-                    count++;
-                }
-                else
-                {
-                    count--;
-                }
+                num=val;
             }
-
-            return ans;
+            if(val==num) count++;
+            else count--;
         }
+        return num;
+    }
 };
