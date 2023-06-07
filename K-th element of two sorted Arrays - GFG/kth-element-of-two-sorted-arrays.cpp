@@ -8,8 +8,8 @@ class Solution{
     public:
     int kthElement(int arr1[], int arr2[], int m, int n, int k)
     {
-        int i = 0, j = 0, t = 0;
-    while (i < m && j < n && t < k)
+            int i = 0, j = 0, t = 0;
+    while (i < m and j < n and t < k)
     {
         if (arr1[i] < arr2[j])
         {
@@ -31,7 +31,7 @@ class Solution{
         }
     }
     // Handle remaining elements in arr1 or arr2
-    while (i < m && t < k)
+    while (i < m and t < k)
     {
         t++;
         if (t == k)
@@ -40,7 +40,7 @@ class Solution{
         }
         i++;
     }
-    while (j < n && t < k)
+    while (j < n and t < k)
     {
         t++;
         if (t == k)
