@@ -9,7 +9,7 @@ class Solution
 
             for (int i = 0; i < nums.size(); i++)
             {
-                if (i == 0 or(i > 0 and nums[i - 1] != nums[i]))
+                if (i == 0 or (i > 0 and nums[i - 1] != nums[i]))
                 {
                     int req = -nums[i], l = i + 1, h = nums.size() - 1;
 
