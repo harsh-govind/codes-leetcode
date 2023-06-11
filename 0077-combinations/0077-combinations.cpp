@@ -9,9 +9,9 @@ class Solution
                 return;
             }
 
-           	//include
-            if (i-1 <n)
+            if (i - 1 < n)
             {
+               	//include
                 current.push_back(i);
                 solve(i + 1, k, current, ans, n);
                 current.pop_back();
