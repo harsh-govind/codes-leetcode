@@ -10,7 +10,7 @@ class Solution
             }
 
            	//include
-            if (i <= n)
+            if (i-1 <n)
             {
                 current.push_back(i);
                 solve(i + 1, k, current, ans, n);
