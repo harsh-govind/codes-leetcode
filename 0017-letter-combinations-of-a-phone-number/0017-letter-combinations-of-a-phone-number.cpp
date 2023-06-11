@@ -31,7 +31,7 @@ class Solution
                 "tuv",
                 "wxyz" };
             vector<string> ans;
-            if(digits.size()==0) return ans;
+            if (digits.size() == 0) return ans;
             string current;
             solve(digits, current, 0, ans, check);
             return ans;
