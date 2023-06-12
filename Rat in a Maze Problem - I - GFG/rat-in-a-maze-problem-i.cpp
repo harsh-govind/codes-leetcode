@@ -76,7 +76,7 @@ class Solution{
         set<pair<int, int>> vis;
         string current="";
         solve(m, n, 0, 0, ans, vis, current);
-        sort(ans.begin(), ans.end());
+        //sort(ans.begin(), ans.end());
         return ans;
     }
 };
