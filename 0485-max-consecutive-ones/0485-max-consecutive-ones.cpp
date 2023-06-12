@@ -12,11 +12,10 @@ class Solution
                 }
                 else
                 {
-                    ans = max(ans, curr);
                     curr = 0;
                 }
+                ans = max(ans, curr);
             }
-            ans = max(ans, curr);
             return ans;
         }
 };
