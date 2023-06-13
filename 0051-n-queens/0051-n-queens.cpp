@@ -24,22 +24,22 @@ class Solution
         }
     bool check(int row, int col, vector<vector < int>> &board, int n)
     {
-        int x=row, y=col;
-        while(y>=0)
+        int x = row, y = col;
+        while (y >= 0)
         {
-            if(board[x][y--]==1) return false; 
+            if (board[x][y--] == 1) return false;
         }
-        x=row;
-        y=col;
-        while(x>=0 and y>=0)
+        x = row;
+        y = col;
+        while (x >= 0 and y >= 0)
         {
-            if(board[x--][y--]==1) return false;
+            if (board[x--][y--] == 1) return false;
         }
-        x=row;
-        y=col;
-        while(x<n and y>=0)
+        x = row;
+        y = col;
+        while (x < n and y >= 0)
         {
-            if(board[x++][y--]==1) return false;
+            if (board[x++][y--] == 1) return false;
         }
         return true;
     }
@@ -50,14 +50,14 @@ class Solution
             addSolution(board, ans, n);
             return;
         }
-        
-        for(int row=0; row<n; row++)
+
+        for (int row = 0; row < n; row++)
         {
-            if(check(row, col, board, n))
+            if (check(row, col, board, n))
             {
-                board[row][col]=1;
-                solve(board, n, ans, col+1);
-                board[row][col]=0;
+                board[row][col] = 1;
+                solve(board, n, ans, col + 1);
+                board[row][col] = 0;
             }
         }
     }
