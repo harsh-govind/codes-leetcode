@@ -7,9 +7,9 @@ class Solution
         for (int i = 0; i < n; i++)
         {
             if (board[i][col] == val) return false;
-            if (board[row][i]  == val) return false;
+            if (board[row][i] == val) return false;
 
-            if (board[3 *(row / 3) + i / 3][3 *(col / 3) + i % 3]  == val) return false;
+            if (board[3 *(row / 3) + i / 3][3 *(col / 3) + i % 3] == val) return false;
         }
 
         return true;
