@@ -11,7 +11,6 @@ public:
                 pq.pop();
             }
         }
-    
         return pq.top();
     }
 };
