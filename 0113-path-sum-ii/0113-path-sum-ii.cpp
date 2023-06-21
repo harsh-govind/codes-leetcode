@@ -21,7 +21,10 @@ class Solution
 
             current.push_back(root->val);
 
-            if (!root->left and!root->right)
+            solve(current, ans, root->left, k);
+            solve(current, ans, root->right, k);
+            
+            if (!root->left and !root->right)
             {
                 int sum = 0;
                 for (int i = 0; i < current.size(); i++)
@@ -34,9 +37,6 @@ class Solution
                     ans.push_back(current);
                 }
             }
-
-            solve(current, ans, root->left, k);
-            solve(current, ans, root->right, k);
 
             current.pop_back();
         }
