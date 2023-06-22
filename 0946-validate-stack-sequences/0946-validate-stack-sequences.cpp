@@ -1,30 +1,26 @@
-class Solution {
-public:
-    bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
-        stack<int>s;
-        int i=0,j=0;
-        while(i<pushed.size()){
-            if(!s.size()){
+class Solution
+{
+    public:
+        bool validateStackSequences(vector<int> &pushed, vector<int> &popped)
+        {
+            stack<int> s;
+            int j = 0, n = pushed.size();
+            for (int i = 0; i < n; i++)
+            {
                 s.push(pushed[i]);
-                i++;
-                continue;
+
+                while (!s.empty() and s.top() == popped[j])
+                {
+                    j++;
+                    s.pop();
+                }
             }
-            if(j<popped.size() && s.top()==popped[j]){
-                s.pop();
-                j++;
+
+            if (s.empty() and j == n)
+            {
+                return true;
             }
-            else {
-               s.push(pushed[i]);
-               i++;
-            }
+
+            return false;
         }
-        while(j<popped.size()){
-            if(s.top()==popped[j]){
-                s.pop();j++;
-            }
-            else break;
-        }
-        if(s.size())return false;
-        else return true;
-    }
 };
