@@ -83,14 +83,14 @@ class Solution{
     public:
     bool areAnagrams(Node *root1, Node *root2)
     {
-        vector<multiset<int>> a;
+        vector<unordered_set<int>> a;
         queue<Node *> q;
         q.push(root1);
         
         while(!q.empty())
         {
             int n=q.size();
-            multiset<int> current;
+            unordered_set<int> current;
             for(int i=0; i<n; i++)
             {
                 Node *temp=q.front();
@@ -110,14 +110,14 @@ class Solution{
             a.push_back(current);
         }
         
-        vector<multiset<int>> b;
+        vector<unordered_set<int>> b;
         queue<Node *> q2;
         q2.push(root2);
         
         while(!q2.empty())
         {
             int n=q2.size();
-            multiset<int> current;
+            unordered_set<int> current;
             for(int i=0; i<n; i++)
             {
                 Node *temp=q2.front();
