@@ -35,8 +35,8 @@ public:
         {
             m[in[i]]=i;
         }
-        int i=0;
-        return solve(i, 0, n-1, pre, in, m, n);
+        int preIdx=0;
+        return solve(preIdx, 0, n-1, pre, in, m, n);
         
     }
 };
