@@ -111,31 +111,56 @@ struct Node
 };
 */
 // your task is to complete this function
-void getPath(Node *root, vector<int> &path, vector<int> &paths, int node)
+Node* solve(Node *root, int node, int &k)
 {
-    if(!root) return;
+    if(!root) return NULL;
     
-    if(node==root->data)
+    if(node == root->data)
     {
-        path.push_back(node);
-        paths=path;
-        return;
+        return root;
     }
     
-    path.push_back(root->data);
-    getPath(root->left, path,paths, node);
-    getPath(root->right, path, paths, node);
-    path.pop_back();
+    Node *left=solve(root->left, node, k);
+    Node *right=solve(root->right, node, k);
+    
+    if(!left and right)
+    {
+        k--;
+        if(k<=0)
+        {
+            k=INT_MAX;
+            return root;
+        }
+        return right;
+    }
+    
+    if(left and !right)
+    {
+        k--;
+        if(k<=0)
+        {
+            k=INT_MAX;
+            return root;
+        }
+        return left;
+    }
+    
+    return NULL;
 }
 int kthAncestor(Node *root, int k, int node)
 {
     // Code here
-    vector<int> path, paths;
-    getPath(root, path,paths, node);
-    if(paths.size()<=k)
+    if(!root)
     {
         return -1;
     }
     
-    return paths[paths.size()-k-1];
+    Node *ans=solve(root, node, k);
+    
+    if(!ans or ans->data == node)
+    {
+        return -1;
+    }
+    
+    return ans->data;
 }
