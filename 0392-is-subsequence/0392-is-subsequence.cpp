@@ -17,7 +17,6 @@ class Solution
 
                 if (i == s.size()) return true;
             }
-            cout<<i<<" "<<j<<endl;
             if (i == s.size()) return true;
             return false;
         }
