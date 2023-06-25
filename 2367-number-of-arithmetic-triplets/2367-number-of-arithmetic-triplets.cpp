@@ -3,19 +3,15 @@ class Solution
     public:
         int arithmeticTriplets(vector<int> &nums, int diff)
         {
-            int ans = 0, n = nums.size();
-            for (int i = 0; i < n - 2; i++)
+            unordered_map<int, int> m;
+            int ans=0;
+            for(auto &v:nums)
             {
-                for (int j = i + 1; j < n - 1; j++)
+                if(m.find(v-diff)!=m.end() and m.find(v-2*diff)!=m.end())
                 {
-                    for (int k = j + 1; k < n; k++)
-                    {
-                        if (nums[j] - nums[i] == diff and nums[k] - nums[j] == diff)
-                        {
-                            ans++;
-                        }
-                    }
+                    ans++;
                 }
+                m[v]++;
             }
 
             return ans;
