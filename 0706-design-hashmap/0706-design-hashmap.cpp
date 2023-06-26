@@ -2,7 +2,7 @@ class MyHashMap {
 public:
     vector<int> hash;
     MyHashMap() {
-        int n=1e6+10;
+        int n=1e6+5;
         hash.resize(n, -1);
     }
     
