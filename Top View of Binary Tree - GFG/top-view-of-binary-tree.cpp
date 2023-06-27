@@ -110,45 +110,41 @@ class Solution
         {
             return ans;
         }
-        
-        //horizontal distance -> node val
+        //horizontal distace -> nodeval
         map<int, int> m;
-        
-        //Node, horizontal distance
         queue<pair<Node*, int>> q;
-        
-        q.push(make_pair(root, 0));
+        q.push({root, 0});
         
         while(!q.empty())
         {
-            pair<Node*, int> temp=q.front();
+            pair<Node*, int> front=q.front();
             q.pop();
             
-            Node *node=temp.first;
-            int hrDst=temp.second;
+            Node *node=front.first;
+            int hrDst=front.second;
             
             if(m.find(hrDst)==m.end())
             {
                 m[hrDst]=node->data;
             }
-            
             if(node->left)
             {
-                q.push(make_pair(node->left, hrDst-1));
+                q.push({node->left, hrDst-1});
             }
-            
             if(node->right)
             {
-                q.push(make_pair(node->right, hrDst+1));
+                q.push({node->right, hrDst+1});
             }
-            
+
         }
+        
         for(auto &val:m)
         {
             ans.push_back(val.second);
         }
         
         return ans;
+        
     }
 
 };
