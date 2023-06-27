@@ -1,40 +1,32 @@
 /**
- *Definition for a binary tree node.
- *struct TreeNode {
- *   int val;
- *   TreeNode * left;
- *   TreeNode * right;
- *   TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- *};
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
  */
-class Solution
-{
-    public:
-        pair<bool, int> solve(TreeNode *root)
-        {
-            if (root == nullptr)
-            {
-                pair<bool, int> p = make_pair(true, 0);
-                return p;
-            }
-
-            pair<bool, int> left = solve(root->left);
-            pair<bool, int> right = solve(root->right);
-
-            bool op1 = left.first;
-            bool op2 = right.first;
-            bool op3 = abs(left.second - right.second) < 2;
-
-            pair<bool, int> ans;
-            ans.first = op1 and op2 and op3;
-            ans.second = max(left.second, right.second) + 1;
-
-            return ans;
-        }
-    bool isBalanced(TreeNode *root)
+class Solution {
+public:
+    int height(TreeNode *root)
     {
-        return solve(root).first;
+        if(!root) return 0;
+        
+        int left=height(root->left);
+        int right=height(root->right);
+        
+        return max(left, right) + 1;
+    }
+    bool isBalanced(TreeNode* root) {
+        if(!root) return true;
+        
+        bool left = isBalanced(root->left);
+        bool right= isBalanced(root->right);
+        bool current = abs(height(root->left)-height(root->right))<2;
+        
+        return left and right and current;
     }
 };
