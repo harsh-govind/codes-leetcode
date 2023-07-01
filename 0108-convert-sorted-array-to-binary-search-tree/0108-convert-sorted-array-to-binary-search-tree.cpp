@@ -16,11 +16,6 @@ class Solution
         {
             if(low>high) return nullptr;
             
-            if (low == high)
-            {
-                TreeNode *node = new TreeNode(nums[low]);
-                return node;
-            }
             int mid = (low + high) / 2;
 
             TreeNode *node = new TreeNode(nums[mid]);
