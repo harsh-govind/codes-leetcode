@@ -41,6 +41,8 @@ public:
     }
 
     TreeNode* bstFromPreorder(vector<int>& preorder) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         vector<int> inorder=preorder;
         sort(inorder.begin(), inorder.end());
         return buildTree(preorder, inorder);
