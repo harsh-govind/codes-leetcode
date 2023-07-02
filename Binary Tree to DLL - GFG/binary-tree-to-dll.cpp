@@ -115,12 +115,11 @@ class Solution
 {
     public: 
     //Function to convert binary tree to doubly linked list and return it.
-    Node *head=nullptr, *prev=nullptr;
-    void solve(Node *root)
+    void solve(Node *root, Node *&head, Node *&prev)
     {
         if(!root) return;
         
-        solve(root->left);
+        solve(root->left, head, prev);
         
         if(!prev)
         {
@@ -132,12 +131,13 @@ class Solution
             prev->right=root;
         }
         prev=root;
-        solve(root->right);
+        solve(root->right, head, prev);
     }
     Node * bToDLL(Node *root)
     {
         // your code here
-        solve(root);
+        Node *head=nullptr, *prev=nullptr;
+        solve(root, head, prev);
         return head;
     }
 };
