@@ -11,40 +11,25 @@
  */
 class Solution {
 public:
-    TreeNode *solve(int &preIdx, int inStart, int inEnd, vector<int> &pre, vector<int> &in, unordered_map<int, int> &m, int n)
+    TreeNode* solve(vector<int> &preorder, int &i, int mn, int mx)
     {
-        if(preIdx>=n or inStart>inEnd)
-        {
-            return nullptr;
-        }
+        if(i>=preorder.size()) return nullptr;
         
-        int element = pre[preIdx++];
-        int position = m[element];
+        if(preorder[i]<mn or preorder[i]>mx) return nullptr;
         
-        TreeNode *root=new TreeNode(element);
-        root->left=solve(preIdx, inStart, position-1, pre, in, m, n);
-        root->right=solve(preIdx, position+1, inEnd, pre, in, m, n);
+        TreeNode *node=new TreeNode(preorder[i++]);
         
-        return root;
-
+        node->left=solve(preorder, i, mn, node->val);
+        node->right=solve(preorder, i, node->val, mx);
+        
+        return node;
     }
-    TreeNode* buildTree(vector<int>& pre, vector<int>& in) {
-        unordered_map<int, int> m;
-        int n=in.size();
-        for(int i=0; i<n; i++)
-        {
-            m[in[i]]=i;
-        }
-        int preIdx=0;
-        return solve(preIdx, 0, n-1, pre, in, m, n);
-        
-    }
-
     TreeNode* bstFromPreorder(vector<int>& preorder) {
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
-        vector<int> inorder=preorder;
-        sort(inorder.begin(), inorder.end());
-        return buildTree(preorder, inorder);
+        
+        long long mn=-999999999, mx=999999999;
+        int i=0;
+        return solve(preorder, i, mn, mx);
     }
 };
