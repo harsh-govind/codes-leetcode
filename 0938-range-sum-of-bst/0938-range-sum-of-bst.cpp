@@ -12,20 +12,21 @@
 class Solution
 {
     public:
-        void solve(TreeNode *root, int low, int high, int &ans)
-        {
-            if (!root) return;
-
-            if (root->val >= low && root->val <= high)
-                ans += root->val;
-
-            solve(root->left, low, high, ans);
-            solve(root->right, low, high, ans);
-        }
     int rangeSumBST(TreeNode *root, int low, int high)
     {
-        int ans = 0;
-        solve(root, low, high, ans);
-        return ans;
+        if(!root) return 0;
+        
+        if(root->val>=low and root->val<=high)
+        {
+            return root->val+rangeSumBST(root->left, low, high)+rangeSumBST(root->right, low, high);
+        }
+        else if(root->val<low)
+        {
+            return rangeSumBST(root->right, low, high);
+        }
+        else
+        {
+            return rangeSumBST(root->left, low, high);
+        }
     }
 };
