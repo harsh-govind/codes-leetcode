@@ -10,7 +10,7 @@ class Solution
                 sum += nums[h];
                 if (sum >= target)
                 {
-                    while (sum >= target)
+                     while (sum >= target)
                     {
                         sum -= nums[l];
                         l++;
