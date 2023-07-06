@@ -18,16 +18,10 @@ public:
 	           i++;
 	        }
 	        if(i>=m) break;
-	        while(j>0)
+	        
+	        while(j>0 and arr[i][j]==1 and arr[i][j-1]==1)
 	        {
-	            if(arr[i][j]==1 and arr[i][j-1]==1)
-	            {
-	                j--;
-	            }
-	            else
-	            {
-	                break;
-	            }
+	            j--;
 	        }
 	        
 	       curr=n-j;
@@ -36,11 +30,7 @@ public:
                 ans.first=curr;
 	            ans.second=i;
 	       }
-	       
-	       if(ans.first==n)
-	       {
-	           return ans.second;
-	       }
+
 	       
 	       i++;
 	    }
