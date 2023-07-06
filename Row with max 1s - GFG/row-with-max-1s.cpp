@@ -43,10 +43,6 @@ public:
 	       }
 	       
 	       i++;
-	       while(i<m and arr[i][j]!=1)
-	       {
-	           i++;
-	       }
 	    }
 	    
 	    return ans.first==INT_MIN?-1:ans.second;
