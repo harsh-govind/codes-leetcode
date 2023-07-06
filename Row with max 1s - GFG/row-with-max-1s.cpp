@@ -17,6 +17,7 @@ public:
 	        {
 	           i++;
 	        }
+	        
 	        if(i>=m) break;
 	        
 	        while(j>0 and arr[i][j]==1 and arr[i][j-1]==1)
@@ -30,14 +31,11 @@ public:
                 ans.first=curr;
 	            ans.second=i;
 	       }
-
 	       
 	       i++;
 	    }
 	    
 	    return ans.first==INT_MIN?-1:ans.second;
-	    
-	    
 	}
 
 };
