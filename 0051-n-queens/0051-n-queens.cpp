@@ -51,6 +51,9 @@ class Solution
         vector<vector < int>> board(n, vector<int> (n, 0));
         vector<vector < string>> ans;
         unordered_map<int, int> roww, upperDiagonal, lowerDiagonal;
+        //upper diagonal -> (n-1)+(col-row)
+        //row -> row
+        //lower diagonal -> (row+col)
         solve(board, n, ans, 0, upperDiagonal, roww, lowerDiagonal);
         return ans;
     }
