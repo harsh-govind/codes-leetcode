@@ -22,28 +22,7 @@ class Solution
             }
             ans.push_back(temp);
         }
-    bool check(int row, int col, vector<vector < int>> &board, int n)
-    {
-        int x = row, y = col;
-        while (y >= 0)
-        {
-            if (board[x][y--] == 1) return false;
-        }
-        x = row;
-        y = col;
-        while (x >= 0 and y >= 0)
-        {
-            if (board[x--][y--] == 1) return false;
-        }
-        x = row;
-        y = col;
-        while (x < n and y >= 0)
-        {
-            if (board[x++][y--] == 1) return false;
-        }
-        return true;
-    }
-    void solve(vector<vector < int>> &board, int n, vector< vector< string>> &ans, int col)
+    void solve(vector<vector < int>> &board, int n, vector< vector< string >> &ans, int col, unordered_map< int, int> &upperDiagonal, unordered_map< int, int> &roww, unordered_map< int, int> &lowerDiagonal)
     {
         if (col == n)
         {
@@ -53,11 +32,17 @@ class Solution
 
         for (int row = 0; row < n; row++)
         {
-            if (check(row, col, board, n))
+            if (upperDiagonal.find((n - 1) + (col - row)) == upperDiagonal.end() and roww.find(row) == roww.end() and lowerDiagonal.find(row + col) == lowerDiagonal.end())
             {
+                upperDiagonal[(n - 1) + (col - row)] = true;
+                roww[row] = true;
+                lowerDiagonal[row + col] = true;
                 board[row][col] = 1;
-                solve(board, n, ans, col + 1);
+                solve(board, n, ans, col + 1, upperDiagonal, roww, lowerDiagonal);
                 board[row][col] = 0;
+                upperDiagonal.erase((n - 1) + (col - row));
+                roww.erase(row);
+                lowerDiagonal.erase(row + col);
             }
         }
     }
@@ -65,7 +50,8 @@ class Solution
     {
         vector<vector < int>> board(n, vector<int> (n, 0));
         vector<vector < string>> ans;
-        solve(board, n, ans, 0);
+        unordered_map<int, int> roww, upperDiagonal, lowerDiagonal;
+        solve(board, n, ans, 0, upperDiagonal, roww, lowerDiagonal);
         return ans;
     }
 };
