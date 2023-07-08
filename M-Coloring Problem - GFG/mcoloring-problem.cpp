@@ -12,7 +12,7 @@ public:
     {
         for(int k=0; k<n; k++)
         {
-            if(k!=node and graph[k][node] == 1 and color[k]==currCol)
+            if(k!=node and graph[node][k] == 1 and color[k]==currCol)
             {
                 return false;
             }
