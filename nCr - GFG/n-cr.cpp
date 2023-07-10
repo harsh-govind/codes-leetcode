@@ -15,13 +15,13 @@ public:
             if (n < 0 || r < 0)
                 return 0;
 
-    if (n < r)
-        return 0;
+            if (n < r)
+                return 0;
 
-    if (n == r)
-        return 1;
-            int k=n;
-            n+=2;
+            if (n == r)
+                return 1;
+                
+            n++;
             vector<vector < long long>> ans;
             for (int i = 0; i < n; i++)
             {
@@ -41,7 +41,7 @@ public:
                 }
             }
             
-            return ans[k][r]%mod;
+            return ans[n-1][r]%mod;
 
     }
 };
