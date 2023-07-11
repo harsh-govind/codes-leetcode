@@ -48,6 +48,7 @@ public:
         int n=path.size();
         int start=n-k;
         int v=1;
+        
         find(path[n-1], nullptr,0, k, ans);
         for(int i=n-2; i>=0 and n>=start; i--)
         {
