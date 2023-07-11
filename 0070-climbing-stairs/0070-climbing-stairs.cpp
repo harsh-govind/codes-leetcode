@@ -14,7 +14,7 @@ class Solution
         }
     int climbStairs(int n)
     {
-        vector<int> dp(n + 5, -1);
+        vector<int> dp(n + 2, -1);
         return solve(0, n, dp);
     }
 };
