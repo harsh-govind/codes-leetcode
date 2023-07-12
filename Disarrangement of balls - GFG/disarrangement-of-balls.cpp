@@ -9,39 +9,22 @@ using namespace std;
 #define MOD 1000000007
 class Solution{
 public:
-    long long solve(int n, vector<long long> &dp)
-    {
-        if(n==1) return 0;
-        if(n==2) return 1;
-        
-        if(dp[n]!=-1) return dp[n];
-        
-        long long current = (n-1)%MOD;
-        long long op1=solve(n-1, dp)%MOD;
-        long long op2=solve(n-2, dp)%MOD;
-        
-        long long ans = current*((op1+op2)%MOD);
-        
-        return dp[n]=ans%MOD;
-    }
     long int disarrange(int n){
         // code here
-        vector<long long> dp(n+1, -1);
-        
-        dp[1]=0;
-        dp[2]=1;
+        long long prev2=0, prev1=1;
         
         for(int i=3; i<=n; i++)
         {
             long long current = (i-1)%MOD;
-            long long op1=dp[i-1]%MOD;
-            long long op2=dp[i-2]%MOD;
+            long long op1=prev1%MOD;
+            long long op2=prev2%MOD;
             
             long long ans = current*((op1+op2)%MOD);
             
-            dp[i]=ans%MOD;
+            prev2=prev1;
+            prev1=ans%MOD;
         }
-        return dp[n];
+        return prev1;
     }
 };
 
