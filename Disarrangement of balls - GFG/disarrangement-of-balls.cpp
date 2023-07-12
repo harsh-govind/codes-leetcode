@@ -27,7 +27,21 @@ public:
     long int disarrange(int n){
         // code here
         vector<long long> dp(n+1, -1);
-        return solve(n, dp);
+        
+        dp[1]=0;
+        dp[2]=1;
+        
+        for(int i=3; i<=n; i++)
+        {
+            long long current = (i-1)%MOD;
+            long long op1=dp[i-1]%MOD;
+            long long op2=dp[i-2]%MOD;
+            
+            long long ans = current*((op1+op2)%MOD);
+            
+            dp[i]=ans%MOD;
+        }
+        return dp[n];
     }
 };
 
