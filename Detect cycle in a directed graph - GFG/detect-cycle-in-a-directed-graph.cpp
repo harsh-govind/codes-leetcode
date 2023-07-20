@@ -6,39 +6,45 @@ using namespace std;
 class Solution {
   public:
     // Function to detect cycle in a directed graph.
-    bool dfs(bool visited[], bool recVis[], int node, vector<int> adj[])
-    {
-        visited[node]=true;
-        recVis[node]=true;
-        
-        for(auto &i:adj[node])
-        {
-            if(!visited[i])
-            {
-                if(dfs(visited, recVis, i, adj)) return true;
-            }
-            else if(recVis[i])
-            {
-                return true;
-            }
-        }
-        
-        recVis[node]=false;
-        return false;
-    }
+	void bfs(vector<int> adj[], int &ans, vector<int> &inDegree, int v)
+	{
+	    queue<int> q;
+	    for(int i=0; i<v; i++)
+	    {
+	        if(inDegree[i]==0)
+	        {
+	            q.push(i);
+	        }
+	    }
+	    
+	    while(!q.empty())
+	    {
+	        int temp=q.front();
+	        q.pop();
+	        ans++;
+	        
+	        for(auto &i:adj[temp])
+	        {
+	            if(--inDegree[i]==0)
+	            {
+	                q.push(i);
+	            }
+	        }
+	    }
+	}
     bool isCyclic(int v, vector<int> adj[]) {
-        bool visited[v]={false}, recVis[v]={false};
-        
-        for(int i=0; i<v; i++)
+	    vector<int> inDegree(v, 0);
+	    for (int j = 0; j < v; j++)
         {
-            if(!visited[i])
+            for (auto &i : adj[j]) 
             {
-                if(dfs(visited, recVis, i, adj)) return true;
+                inDegree[i]++;
             }
         }
-        
-        return false;
-        
+	    
+	    int ans=0;
+	    bfs(adj, ans, inDegree, v);
+	    return ans!=v;
     }
 };
 
