@@ -7,43 +7,46 @@ class Solution
 {
 	public:
 	//Function to return list containing vertices in Topological order. 
-	void dfs(vector<int> adj[], int node, stack<int> &s, bool visited[])
+	void bfs(vector<int> adj[], vector<int> &ans, vector<int> &inDegree, int v)
 	{
-	    visited[node]=true;
-	    
-	    for(auto &i:adj[node])
-	    {
-	        if(!visited[i])
-	        {
-	            dfs(adj, i, s, visited);
-	        }
-	    }
-	    
-	    s.push(node);
-	}
-	
-	vector<int> topoSort(int v, vector<int> adj[]) 
-	{
-	    // code here
-	    bool visited[v]={false};
-	    stack<int> s;
-	    
+	    queue<int> q;
 	    for(int i=0; i<v; i++)
 	    {
-	        if(!visited[i])
+	        if(inDegree[i]==0)
 	        {
-	            dfs(adj, i, s, visited);
+	            q.push(i);
 	        }
 	    }
 	    
-	    vector<int> ans;
-	    while(!s.empty())
+	    while(!q.empty())
 	    {
-	        ans.push_back(s.top());
-	        s.pop();
+	        int temp=q.front();
+	        q.pop();
+	        ans.push_back(temp);
+	        
+	        for(auto &i:adj[temp])
+	        {
+	            if(--inDegree[i]==0)
+	            {
+	                q.push(i);
+	            }
+	        }
 	    }
-	    return ans;
+	}
+	vector<int> topoSort(int v, vector<int> adj[]) 
+	{
+	    vector<int> inDegree(v, 0);
+	    for (int j = 0; j < v; j++)
+        {
+            for (auto &i : adj[j]) 
+            {
+                inDegree[i]++;
+            }
+        }
 	    
+	    vector<int> ans;
+	    bfs(adj, ans, inDegree, v);
+	    return ans;
 	}
 };
 
