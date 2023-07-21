@@ -1,18 +1,17 @@
 class Solution {
 public:
-    void dfs(vector<vector<bool>>& visited, vector<vector<char>>& board, int i, int j) {
+    void dfs(vector<vector<char>>& board, int i, int j) {
         int m = board.size();
         int n = board[0].size();
-        visited[i][j] = true;
-
+        board[i][j]='K';
         int dx[] = {1, 0, -1, 0};
         int dy[] = {0, -1, 0, 1};
 
         for (int k = 0; k < 4; k++) {
             int newi = i + dx[k];
             int newj = j + dy[k];
-            if (newi >= 0 && newi < m && newj >= 0 && newj < n && !visited[newi][newj] && board[newi][newj] == 'O') {
-                dfs(visited, board, newi, newj);
+            if (newi >= 0 and newi < m and newj >= 0 and newj < n and board[newi][newj] == 'O') {
+                dfs(board, newi, newj);
             }
         }
     }
@@ -20,12 +19,11 @@ public:
     void solve(vector<vector<char>>& board) {
         int m = board.size();
         int n = board[0].size();
-        vector<vector<bool>> visited(m, vector<bool>(n, false));
-
+        
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if ((i == 0 || i == m - 1 || j == 0 || j == n - 1) && !visited[i][j] && board[i][j] == 'O') {
-                    dfs(visited, board, i, j);
+                if ((i == 0 || i == m - 1 || j == 0 || j == n - 1) and board[i][j] == 'O') {
+                    dfs(board, i, j);
                 }
             }
         }
@@ -33,7 +31,7 @@ public:
         // Replace remaining 'O's that are not connected to the border with 'X'
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (board[i][j] == 'O' && !visited[i][j]) {
+                if (board[i][j] == 'O') {
                     board[i][j] = 'X';
                 }
             }
