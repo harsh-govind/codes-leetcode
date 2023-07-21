@@ -5,14 +5,13 @@ public:
         int n = mat[0].size();
         queue<pair<pair<int, int>, int>> q;
         vector<vector<int>> ans(m, vector<int>(n, 0));
+        vector<vector<bool>> visited(m, vector<bool>(n, false)); // Separate visited array
         
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (mat[i][j] == 0) {
                     q.push({{i, j}, 0});
-                } else {
-                    // Mark non-zero cells as visited with a unique value
-                    mat[i][j] = -1;
+                    visited[i][j] = true; // Mark as visited
                 }
             }
         }
@@ -28,10 +27,9 @@ public:
             for (int i = 0; i < 4; i++) {
                 int nrow = row + dx[i];
                 int ncol = col + dy[i];
-                if (nrow >= 0 && nrow < m && ncol >= 0 && ncol < n && mat[nrow][ncol] == -1) {
+                if (nrow >= 0 && nrow < m && ncol >= 0 && ncol < n && !visited[nrow][ncol]) {
                     q.push({{nrow, ncol}, dist + 1});
-                    // Mark the cell as visited by setting it to a non-zero value
-                    mat[nrow][ncol] = -2;
+                    visited[nrow][ncol] = true; // Mark as visited
                 }
             }
         }
