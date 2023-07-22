@@ -10,52 +10,46 @@ using namespace std;
 
 class Solution {
   public:
-      bool dfs(bool visited[], bool recVis[], int node, vector<int> adj[], bool check[])
-        {
-            visited[node]=true;
-            recVis[node]=true;
-            check[node]=false;
-            for(auto &i:adj[node])
-            {
-                if(!visited[i])
-                {
-                    if(dfs(visited, recVis, i, adj, check))
-                    {
-                        check[node]=false;
-                        return true;
-                    }
-                }
-                else if(recVis[i])
-                {
-                    check[node]=false;
-                    return true;
-                }
-            }
-            
-            check[node]=true;
-            recVis[node]=false;
-            return false;
-        }
     vector<int> eventualSafeNodes(int v, vector<int> adj[]) {
         // code here
-        bool visited[v]={false}, recVis[v]={false}, check[v]={false};
+        vector<int> indegree(v, 0);
+        vector<int> adjRev[v];
         
         for(int i=0; i<v; i++)
         {
-            if(!visited[i])
+            for(auto &it:adj[i])
             {
-                dfs(visited, recVis, i, adj, check);
+                adjRev[it].push_back(i);
+                indegree[i]++;
             }
         }
-        vector<int> ans;
         
-        for(int i=0; i<v;i++)
+        queue<int> q;
+        vector<int> ans;
+        for(int i=0; i<v; i++)
         {
-            if(check[i])
+            if(indegree[i]==0)
             {
-                ans.push_back(i);
+                q.push(i);
             }
         }
+        
+        while(!q.empty())
+        {
+            int front=q.front();
+            q.pop();
+            
+            ans.push_back(front);
+            
+            for(auto &it:adjRev[front])
+            {
+                indegree[it]--;
+                if(indegree[it]==0) q.push(it);
+            }
+        }
+        
+        sort(ans.begin(), ans.end());
+        
         return ans;
     }
 };
