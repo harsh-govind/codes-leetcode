@@ -10,7 +10,7 @@ public:
                 if(ch==separator)
                 {
                     if(current!="")
-                    ans.push_back(current);
+                        ans.push_back(current);
                     current="";
                 }
                 else
