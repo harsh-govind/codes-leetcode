@@ -10,14 +10,12 @@ class Solution
                 {
                     return true;
                 }
-                if (nums[l] == nums[m] and nums[m] == nums[h])
+                else if (nums[l] == nums[m] and nums[m] == nums[h])
                 {
                     l++;
                     h--;
-                    continue;
                 }
-                
-                if (nums[l] <= nums[m])
+                else if (nums[l] <= nums[m])
                 {
                     if (x >= nums[l] and x <= nums[m])
                     {
