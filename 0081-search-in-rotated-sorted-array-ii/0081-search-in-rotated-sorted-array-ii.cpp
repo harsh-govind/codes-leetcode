@@ -10,7 +10,14 @@ class Solution
                 {
                     return true;
                 }
-                else if (nums[l] < nums[m])
+                if (nums[l] == nums[m] and nums[m] == nums[h])
+                {
+                    l++;
+                    h--;
+                    continue;
+                }
+                
+                if (nums[l] <= nums[m])
                 {
                     if (x >= nums[l] and x <= nums[m])
                     {
@@ -21,7 +28,7 @@ class Solution
                         l = m + 1;
                     }
                 }
-                else if (nums[m] < nums[l])
+                else
                 {
                     if (x >= nums[m] and x <= nums[h])
                     {
@@ -31,10 +38,6 @@ class Solution
                     {
                         h = m - 1;
                     }
-                }
-                else
-                {
-                    l++;
                 }
             }
 
