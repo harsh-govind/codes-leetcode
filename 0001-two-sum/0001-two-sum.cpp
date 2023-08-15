@@ -24,6 +24,7 @@ class Solution
                 }
                 s[v[i]] = i;
             }
+            //ok
             return ans;
         }
 };
