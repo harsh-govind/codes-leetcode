@@ -12,7 +12,7 @@ public:
         
         for(int i=0; i<=k; i++)
         {
-            int low=i, high=n-(k-i)-1;
+            int low=i, high=i+(n-k-1);
             
             int curr;
             if(i==0)
