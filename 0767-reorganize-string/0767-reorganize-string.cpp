@@ -15,7 +15,8 @@ class Solution
                     val.first });
             }
             string ans = "";
-            pair<int, char> block = { -1,'#'};
+            pair<int, char> block = { -1,
+                '#' };
             while (p.size() > 0)
             {
                 auto temp = p.top();
