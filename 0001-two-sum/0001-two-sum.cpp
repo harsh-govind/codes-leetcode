@@ -3,13 +3,6 @@ class Solution
     public:
         vector<int> twoSum(vector<int> &v, int key)
         {
-            //trip trip tripteip trip trip
-            //Try try
-            // 20. Valid Parentheses upoaded
-            // 20. Valid Parentheses upoaded
-            // uploaded
-            // uploaded
-            //done yes
             unordered_map<int, int> s;
             int n = v.size();
             vector<int> ans;
@@ -24,7 +17,6 @@ class Solution
                 }
                 s[v[i]] = i;
             }
-            //ok
             return ans;
         }
 };
