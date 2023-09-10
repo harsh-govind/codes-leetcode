@@ -5,7 +5,6 @@ class Solution
         {
             
             int firstIdx = -1, lastIdx = -1;
-
             for (int i = 0; i < nums.size(); i++)
             {
                 if (firstIdx == -1 and nums[i] == maxNum)
@@ -18,7 +17,6 @@ class Solution
                     lastIdx = nums.size() - i - 1;
                 }
             }
-
             return lastIdx - firstIdx + 1;
         }
         int findShortestSubArray(vector<int> &nums)
