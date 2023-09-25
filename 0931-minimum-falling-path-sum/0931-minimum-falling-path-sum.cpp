@@ -9,6 +9,7 @@ public:
         for(int l=0; l<n; l++)
         {
             dp[0][l]=grid[0][l];
+        }
             for(int i=1; i<m; i++)
             {
                 for(int j=0; j<n; j++)
@@ -33,7 +34,7 @@ public:
                     dp[i][j]=min(min(upRight, upLeft), up);
                 }
             }
-        }
+        
         for(int i=0; i<n; i++)
         {
             ans=min(ans, dp[m-1][i]);
