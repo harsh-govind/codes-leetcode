@@ -1,30 +1,25 @@
 class Solution {
 public:
-    int solve(vector<vector<int>> &grid, int i, int j, int m, vector<vector<int>> &dp)
-    {
-       if(i>=m or i<0) return 1e6;
-
-        int n=grid[i].size();
+    int minimumTotal(vector<vector<int>>& grid) {
+        int m = grid.size();
         
-        if(j>=n or j<0) return 1e6;
+        // Create a DP array to store minimum path sums
+        vector<vector<int>> dp(m, vector<int>(m, 0));
         
-        if(i==m-1)
-        {
-            return grid[i][j];
+        // Initialize the DP array with the values from the bottom row
+        for (int i = 0; i < m; i++) {
+            dp[m - 1][i] = grid[m - 1][i];
         }
         
-        if(dp[i][j]!=-1) return dp[i][j];
+        // Start from the second-to-last row and work upwards
+        for (int i = m - 2; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
+                // Calculate the minimum path sum for each cell
+                dp[i][j] = grid[i][j] + min(dp[i + 1][j], dp[i + 1][j + 1]);
+            }
+        }
         
-        int down=1e6, dig=1e6;
-        
-        down=grid[i][j]+solve(grid, i+1, j, m, dp);
-        dig=grid[i][j]+solve(grid, i+1, j+1, m, dp);
-        
-        return dp[i][j]=min(down, dig);
-    }
-    int minimumTotal(vector<vector<int>>& grid) {
-        int m=grid.size();
-        vector<vector<int>> dp(m, vector<int> (m, -1));
-        return solve(grid, 0, 0, m, dp);
+        // The minimum path sum will be at the top of the DP array
+        return dp[0][0];
     }
 };
