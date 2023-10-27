@@ -27,6 +27,14 @@ class Solution
             }
         }
 
-        return s.substr(start,end - start + 1);
+        return s.substr(start, end - start + 1);
     }
 };
+
+/*
+
+aabaa
+
+baab
+
+*/
