@@ -19,6 +19,7 @@ public:
 
         // <!-- identify the range within which differences will lie -->
         int left = 0;
+        // or find minimum 
         // <!-- as said in the intuition about max difference -->
         int right = *max_element(nums.begin(), nums.end());
 
